@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B47551E1ACAF7AA0017CB87 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B47551C1ACAF7AA0017CB87 /* Model.xcdatamodeld */; };
+		0B4755241ACAFA240017CB87 /* TypeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4755231ACAFA240017CB87 /* TypeTest.m */; };
+		0B4755271ACB05860017CB87 /* LocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4755261ACB05860017CB87 /* LocalDataManager.m */; };
+		0B4755301ACB15260017CB87 /* Entity1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B47552F1ACB15260017CB87 /* Entity1.m */; };
+		0B4755331ACB15260017CB87 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4755321ACB15260017CB87 /* Player.m */; };
+		0B47553C1ACB1A610017CB87 /* Player+Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B47553B1ACB1A610017CB87 /* Player+Item.m */; };
+		0B4755441ACB3F440017CB87 /* CDSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4755431ACB3F440017CB87 /* CDSource.m */; };
 		0BE6B7611AC993F1005017C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6B7601AC993F1005017C2 /* main.m */; };
 		0BE6B7641AC993F1005017C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6B7631AC993F1005017C2 /* AppDelegate.m */; };
 		0BE6B7671AC993F1005017C2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6B7661AC993F1005017C2 /* ViewController.m */; };
@@ -14,6 +21,8 @@
 		0BE6B76C1AC993F1005017C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6B76B1AC993F1005017C2 /* Images.xcassets */; };
 		0BE6B76F1AC993F1005017C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6B76D1AC993F1005017C2 /* LaunchScreen.xib */; };
 		0BE6B77B1AC993F1005017C2 /* LocalTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6B77A1AC993F1005017C2 /* LocalTestTests.m */; };
+		0BE6B7861AC99472005017C2 /* C1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6B7851AC99472005017C2 /* C1.m */; };
+		0BE6B78A1AC99492005017C2 /* TT.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6B7891AC99492005017C2 /* TT.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +36,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B47551D1ACAF7AA0017CB87 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		0B4755221ACAFA240017CB87 /* TypeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeTest.h; sourceTree = "<group>"; };
+		0B4755231ACAFA240017CB87 /* TypeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeTest.m; sourceTree = "<group>"; };
+		0B4755251ACB05860017CB87 /* LocalDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataManager.h; sourceTree = "<group>"; };
+		0B4755261ACB05860017CB87 /* LocalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataManager.m; sourceTree = "<group>"; };
+		0B47552E1ACB15260017CB87 /* Entity1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entity1.h; path = LocalTestTests/Entity1.h; sourceTree = "<group>"; };
+		0B47552F1ACB15260017CB87 /* Entity1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entity1.m; path = LocalTestTests/Entity1.m; sourceTree = "<group>"; };
+		0B4755311ACB15260017CB87 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = LocalTestTests/Player.h; sourceTree = "<group>"; };
+		0B4755321ACB15260017CB87 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = LocalTestTests/Player.m; sourceTree = "<group>"; };
+		0B47553A1ACB1A610017CB87 /* Player+Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+Item.h"; sourceTree = "<group>"; };
+		0B47553B1ACB1A610017CB87 /* Player+Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+Item.m"; sourceTree = "<group>"; };
+		0B4755421ACB3F440017CB87 /* CDSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSource.h; sourceTree = "<group>"; };
+		0B4755431ACB3F440017CB87 /* CDSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSource.m; sourceTree = "<group>"; };
 		0BE6B75B1AC993F1005017C2 /* LocalTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BE6B75F1AC993F1005017C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BE6B7601AC993F1005017C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +62,10 @@
 		0BE6B7741AC993F1005017C2 /* LocalTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BE6B7791AC993F1005017C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BE6B77A1AC993F1005017C2 /* LocalTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalTestTests.m; sourceTree = "<group>"; };
+		0BE6B7841AC99472005017C2 /* C1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C1.h; path = "../../Dropbox/ios quick start tutorials/The iOS Apprentice 3 - MyLocations/Source Code/01 - GPS Coordinates/MyLocations/C1.h"; sourceTree = "<group>"; };
+		0BE6B7851AC99472005017C2 /* C1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = C1.m; path = "../../Dropbox/ios quick start tutorials/The iOS Apprentice 3 - MyLocations/Source Code/01 - GPS Coordinates/MyLocations/C1.m"; sourceTree = "<group>"; };
+		0BE6B7881AC99492005017C2 /* TT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TT.h; path = "../../Dropbox/ios quick start tutorials/The iOS Apprentice 3 - MyLocations/Source Code/01 - GPS Coordinates/TT.h"; sourceTree = "<group>"; };
+		0BE6B7891AC99492005017C2 /* TT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TT.m; path = "../../Dropbox/ios quick start tutorials/The iOS Apprentice 3 - MyLocations/Source Code/01 - GPS Coordinates/TT.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +89,7 @@
 		0BE6B7521AC993F1005017C2 = {
 			isa = PBXGroup;
 			children = (
+				0BE6B7871AC99477005017C2 /* test */,
 				0BE6B75D1AC993F1005017C2 /* LocalTest */,
 				0BE6B7771AC993F1005017C2 /* LocalTestTests */,
 				0BE6B75C1AC993F1005017C2 /* Products */,
@@ -83,12 +110,15 @@
 			children = (
 				0BE6B7621AC993F1005017C2 /* AppDelegate.h */,
 				0BE6B7631AC993F1005017C2 /* AppDelegate.m */,
+				0B47551C1ACAF7AA0017CB87 /* Model.xcdatamodeld */,
 				0BE6B7651AC993F1005017C2 /* ViewController.h */,
 				0BE6B7661AC993F1005017C2 /* ViewController.m */,
 				0BE6B7681AC993F1005017C2 /* Main.storyboard */,
 				0BE6B76B1AC993F1005017C2 /* Images.xcassets */,
 				0BE6B76D1AC993F1005017C2 /* LaunchScreen.xib */,
 				0BE6B75E1AC993F1005017C2 /* Supporting Files */,
+				0B4755251ACB05860017CB87 /* LocalDataManager.h */,
+				0B4755261ACB05860017CB87 /* LocalDataManager.m */,
 			);
 			path = LocalTest;
 			sourceTree = "<group>";
@@ -117,6 +147,27 @@
 				0BE6B7791AC993F1005017C2 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0BE6B7871AC99477005017C2 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				0B4755311ACB15260017CB87 /* Player.h */,
+				0B47553A1ACB1A610017CB87 /* Player+Item.h */,
+				0B47553B1ACB1A610017CB87 /* Player+Item.m */,
+				0B4755321ACB15260017CB87 /* Player.m */,
+				0B47552E1ACB15260017CB87 /* Entity1.h */,
+				0B47552F1ACB15260017CB87 /* Entity1.m */,
+				0BE6B7881AC99492005017C2 /* TT.h */,
+				0BE6B7891AC99492005017C2 /* TT.m */,
+				0B4755421ACB3F440017CB87 /* CDSource.h */,
+				0B4755431ACB3F440017CB87 /* CDSource.m */,
+				0BE6B7841AC99472005017C2 /* C1.h */,
+				0BE6B7851AC99472005017C2 /* C1.m */,
+				0B4755221ACAFA240017CB87 /* TypeTest.h */,
+				0B4755231ACAFA240017CB87 /* TypeTest.m */,
+			);
+			name = test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +270,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B4755241ACAFA240017CB87 /* TypeTest.m in Sources */,
+				0B4755441ACB3F440017CB87 /* CDSource.m in Sources */,
 				0BE6B7671AC993F1005017C2 /* ViewController.m in Sources */,
 				0BE6B7641AC993F1005017C2 /* AppDelegate.m in Sources */,
+				0B47553C1ACB1A610017CB87 /* Player+Item.m in Sources */,
+				0B4755301ACB15260017CB87 /* Entity1.m in Sources */,
+				0B4755331ACB15260017CB87 /* Player.m in Sources */,
 				0BE6B7611AC993F1005017C2 /* main.m in Sources */,
+				0BE6B78A1AC99492005017C2 /* TT.m in Sources */,
+				0B4755271ACB05860017CB87 /* LocalDataManager.m in Sources */,
+				0BE6B7861AC99472005017C2 /* C1.m in Sources */,
+				0B47551E1ACAF7AA0017CB87 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = LocalTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = LocalTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -414,6 +476,7 @@
 				0BE6B7801AC993F1005017C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0BE6B7811AC993F1005017C2 /* Build configuration list for PBXNativeTarget "LocalTestTests" */ = {
 			isa = XCConfigurationList;
@@ -422,8 +485,22 @@
 				0BE6B7831AC993F1005017C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B47551C1ACAF7AA0017CB87 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B47551D1ACAF7AA0017CB87 /* Model.xcdatamodel */,
+			);
+			currentVersion = 0B47551D1ACAF7AA0017CB87 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0BE6B7531AC993F1005017C2 /* Project object */;
 }
