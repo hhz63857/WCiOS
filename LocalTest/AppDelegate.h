@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TestViewController.h"
+#import "TestCollectionViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong,nonatomic)TestViewController *testViewController;
+//@property (strong,nonatomic)TestTableViewController *testTableViewController;
+@property (strong,nonatomic)TestCollectionViewController *testCollectionViewController;
+@property (strong,nonatomic)UINavigationController *navigationController;
 
 @end
 

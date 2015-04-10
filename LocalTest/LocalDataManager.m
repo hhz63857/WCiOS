@@ -9,12 +9,13 @@
 #import "LocalDataManager.h"
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "Player+Item.h"
+#import "Player.h"
 
 @implementation LocalDataManager{
     UIManagedDocument *doc;
     NSManagedObjectContext *context;
     NSURL *url;
+    NSPersistentStoreCoordinator *_persistentStoreCoordinator;
 }
 
 -(LocalDataManager *) initWithDoc:(UIManagedDocument *)d url:(NSURL *)u
@@ -32,18 +33,42 @@
     [self readAll:@"Player"];
 }
 
+
+- (NSString *)dataStorePath {
+    return [[self documentsDirectory]
+            stringByAppendingPathComponent:@"DataStore.sqlite"];
+}
+
+//- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+//    if (_persistentStoreCoordinator == nil) {
+//        NSURL *storeURL = [NSURL fileURLWithPath:
+//                                    [self dataStorePath]];
+//        _persistentStoreCoordinator =
+//            [[NSPersistentStoreCoordinator alloc]
+//                initWithManagedObjectModel:self.managedObjectModel];
+//        NSError *error;
+//        if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+//                            configuration:nil
+//                            URL:storeURL
+//                            options:nil error:&error]) {
+//            NSLog(@"Error %@ %@", error, [error userInfo]);
+////            about();
+//        }
+//    }
+//    return _persistentStoreCoordinator;
+//}
+
+
 -(void) writeTestData:(NSString *)entity
 {
     id globalStore = [[context persistentStoreCoordinator] persistentStoreForURL:url];
     Player *player = [NSEntityDescription insertNewObjectForEntityForName:entity inManagedObjectContext:context];
-    player.name = @"hh15";
-    player.id = @(123222);
+    player.name = @"hh";
     
     [context assignObject:player toPersistentStore:globalStore];
     
     Player *player2 = [NSEntityDescription insertNewObjectForEntityForName:entity inManagedObjectContext:context];
-    player2.name = @"hh332";
-    player2.id = @(2222);
+    player2.name = @"hhk";
     [context assignObject:player2 toPersistentStore:globalStore];
 }
 
@@ -54,19 +79,6 @@
     [req setEntity:description];
     NSError *error;
     NSArray *arr = [context executeFetchRequest:req error:&error];
-    NSLog(@"%d", [arr count]);
-    NSLog(@"%@", arr);
 }
-
-//- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-//    NSError *error = nil;
-//    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-//                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-//                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-//    NSPersistentStoreCoordinator* persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [Player]];
-//    [persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:options error:&error]);
-//    
-//    return persistentStoreCoordinator;
-//}
 
 @end

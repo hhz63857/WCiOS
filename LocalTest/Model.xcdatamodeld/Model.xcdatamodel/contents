@@ -5,6 +5,10 @@
         <attribute name="name" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="newRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="newRelationship" inverseEntity="Player" syncable="YES"/>
     </entity>
+    <entity name="News" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Player" representedClassName="Player" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,6 +18,7 @@
     </entity>
     <elements>
         <element name="Entity1" positionX="-45" positionY="-18" width="128" height="88"/>
+        <element name="News" positionX="-45" positionY="173" width="128" height="73"/>
         <element name="Player" positionX="250" positionY="-18" width="128" height="118"/>
     </elements>
 </model>
