@@ -7,7 +7,7 @@
 //
 
 #import "LocalDataModel.h"
-#define PLAYER_DOC_NAME @"DFF.sqlite"
+#define PLAYER_DOC_NAME @"WCC.sqlite"
 
 @implementation LocalDataModel
 

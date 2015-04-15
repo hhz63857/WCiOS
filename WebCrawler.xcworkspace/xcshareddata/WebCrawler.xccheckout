@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A5DC7AD6-522D-4976-95AD-8F743E098DD3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WebCrawler</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EDEB91DF1498606A4D98A274571614A767200C2D</key>
+		<string>github.com:hhz63857/iOSTests.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WebCrawler.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EDEB91DF1498606A4D98A274571614A767200C2D</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:hhz63857/iOSTests.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EDEB91DF1498606A4D98A274571614A767200C2D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EDEB91DF1498606A4D98A274571614A767200C2D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LocalTest</string>
+		</dict>
+	</array>
+</dict>
+</plist>

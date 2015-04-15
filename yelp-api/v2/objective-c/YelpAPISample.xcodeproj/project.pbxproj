@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CD815881AD8567A008A3BA1 /* YelpURLFetchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD815871AD8567A008A3BA1 /* YelpURLFetchTest.m */; };
+		1CD8158B1AD86A96008A3BA1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8158A1AD86A96008A3BA1 /* AppDelegate.m */; };
 		8906AB041963964000198A29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8906AB031963964000198A29 /* Foundation.framework */; };
 		8906AB071963964000198A29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906AB061963964000198A29 /* main.m */; };
 		8906AB3C1963965500198A29 /* YPAPISample.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906AB131963965500198A29 /* YPAPISample.m */; };
@@ -43,6 +45,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1CD815861AD8567A008A3BA1 /* YelpURLFetchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpURLFetchTest.h; sourceTree = "<group>"; };
+		1CD815871AD8567A008A3BA1 /* YelpURLFetchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpURLFetchTest.m; sourceTree = "<group>"; };
+		1CD815891AD86A96008A3BA1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1CD8158A1AD86A96008A3BA1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8906AB001963964000198A29 /* YelpAPISample */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = YelpAPISample; sourceTree = BUILT_PRODUCTS_DIR; };
 		8906AB031963964000198A29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8906AB061963964000198A29 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,9 +107,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CD815851AD85655008A3BA1 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				1CD815861AD8567A008A3BA1 /* YelpURLFetchTest.h */,
+				1CD815871AD8567A008A3BA1 /* YelpURLFetchTest.m */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
 		8906AAF71963963F00198A29 = {
 			isa = PBXGroup;
 			children = (
+				1CD815891AD86A96008A3BA1 /* AppDelegate.h */,
+				1CD8158A1AD86A96008A3BA1 /* AppDelegate.m */,
+				1CD815851AD85655008A3BA1 /* Test */,
 				8906AB051963964000198A29 /* YelpAPISample */,
 				8906AB021963964000198A29 /* Frameworks */,
 				8906AB011963964000198A29 /* Products */,
@@ -258,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CD8158B1AD86A96008A3BA1 /* AppDelegate.m in Sources */,
 				8906AB071963964000198A29 /* main.m in Sources */,
 				8906AB4D1963965500198A29 /* OATokenManager.m in Sources */,
 				8906AB411963965500198A29 /* hmac.c in Sources */,
@@ -272,6 +291,7 @@
 				8906AB431963965500198A29 /* OACall.m in Sources */,
 				8906AB4B1963965500198A29 /* OAServiceTicket.m in Sources */,
 				8906AB4A1963965500198A29 /* OARequestParameter.m in Sources */,
+				1CD815881AD8567A008A3BA1 /* YelpURLFetchTest.m in Sources */,
 				8906AB3E1963965500198A29 /* NSString+URLEncoding.m in Sources */,
 				8906AB441963965500198A29 /* OAConsumer.m in Sources */,
 				8906AB3C1963965500198A29 /* YPAPISample.m in Sources */,

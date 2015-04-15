@@ -24,5 +24,5 @@
  */
 - (void)queryTopBusinessInfoForTerm:(NSString *)term location:(NSString *)location completionHandler:(void (^)(NSDictionary *jsonResponse, NSError *error))completionHandler;
 
-
+- (void)testYelpApi:(void (^)(NSDictionary *topBusinessJSON, NSError *error))completionHandler;
 @end

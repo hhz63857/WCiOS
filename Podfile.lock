@@ -20,14 +20,17 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Canvas (0.1.2)
   - ObjectiveSugar (0.9)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - Canvas
   - ObjectiveSugar (~> 0.5)
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
+  Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
   ObjectiveSugar: 18409ee1ec578dd8598b55e5008f393488dca5cf
 
 COCOAPODS: 0.36.3

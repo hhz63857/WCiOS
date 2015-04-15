@@ -11,7 +11,7 @@ static NSString * const kAPIHost           = @"api.yelp.com";
 static NSString * const kWebHost           = @"www.yelp.com";
 static NSString * const kSearchPath        = @"/v2/search/";
 static NSString * const kBusinessPath      = @"/v2/business/";
-static NSString * const kBusinessWebPath      = @"/biz/";
+static NSString * const kBusinessWebPath   = @"/biz/";
 static NSString * const kSearchLimit       = @"20";
 
 @implementation YPAPISample
@@ -32,22 +32,27 @@ static NSString * const kSearchLimit       = @"20";
         if (!error && httpResponse.statusCode == 200) {
             
             NSDictionary *searchResponseJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            NSArray *businessArray = searchResponseJSON[@"businesses"];
             
-
+            //1, just for print out testing
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:searchResponseJSON
+                                                               options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                                 error:&error];
+            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"search Json %@", jsonString);
+            
+            //2, fetch all detail info
+            NSArray *businessArray = searchResponseJSON[@"businesses"];
             for (NSDictionary * dict in businessArray) {
                 NSString *idd = dict[@"id"];
-                [self queryBusinessInfoForBusinessIdFromYelpWebpage:idd completionHandler:completionHandler];
+//                [self queryBusinessInfoForBusinessIdFromYelpWebpage:idd completionHandler:completionHandler];
+                
+                //3, fetch images
+                NSString *imgUrl = dict[@"snippet_image_url"];
+                [self fetchSnippetImg:imgUrl completionHandler:completionHandler];
             }
             
-//            [self queryBusinessInfoForBusinessIds:iddArr completionHandler:completionHandler];
-
+            //4, last step
             if ([businessArray count] > 0) {
-//                NSDictionary *firstBusiness = [businessArray firstObject];
-//                NSString *firstBusinessID = firstBusiness[@"id"];
-//                NSLog(@"%lu businesses found, querying business info for the top result: %@", (unsigned long)[businessArray count], firstBusinessID);
-//                
-//                [self queryBusinessInfoForBusinessId:firstBusinessID completionHandler:completionHandler];
             } else {
                 completionHandler(nil, error); // No business was found
             }
@@ -57,23 +62,44 @@ static NSString * const kSearchLimit       = @"20";
     }] resume];
 }
 
-- (void)queryBusinessInfoForBusinessIds:(NSMutableArray *)businessIDs completionHandler:(void (^)(NSDictionary *topBusinessJSON, NSError *error))completionHandler {
-    __block NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-    for (__block NSString * bid in [businessIDs subarrayWithRange:NSRangeFromString(@"0-1")]) {
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSURLRequest *businessInfoRequest = [self _businessInfoRequestForID:bid];
-        [[session dataTaskWithRequest:businessInfoRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            NSLog(@"%@", bid);
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            if (!error && httpResponse.statusCode == 200) {
-                NSDictionary *businessResponseJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                jsonDict[bid] = businessResponseJSON;
-            } else {
-                completionHandler(nil, error);
-            }
-        }] resume];
-    }
-    completionHandler(jsonDict, nil);
+- (void)fetchSnippetImg:(NSString *)url completionHandler:(void (^)(NSDictionary *imageData, NSError *error))completionHandler{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *nsurl = [NSURL URLWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:nsurl];
+
+    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (!error && httpResponse.statusCode == 200) {
+            NSDictionary *businessResponseJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            
+            completionHandler(businessResponseJSON, error);
+        } else {
+            completionHandler(nil, error);
+        }
+    }] resume];
+
+}
+
+- (void)testYelpApi:(void (^)(NSDictionary *topBusinessJSON, NSError *error))completionHandler{
+    //Make a first request to get the search results with the passed term and location
+    NSDictionary *params = @{@"ids":@"philz-coffee-cupertino,starbucks-santa-clara-18"
+                             };
+    
+    NSURLRequest *request = [NSURLRequest requestWithHost:kAPIHost path:kSearchPath params:params];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        
+        if (!error && httpResponse.statusCode == 200) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            completionHandler(json, nil);
+        } else {
+        }
+    }] resume];
+
 }
 
 - (void)queryBusinessInfoForBusinessId:(NSString *)businessID completionHandler:(void (^)(NSDictionary *topBusinessJSON, NSError *error))completionHandler {

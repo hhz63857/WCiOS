@@ -25,8 +25,8 @@
 -(void) startWithModel
 {
     LocalDataModel *dm = [[LocalDataModel alloc] init];
-    NSManagedObject *player1 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"hhz"];
-    NSManagedObject *player2 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"hhzz"];
+    NSManagedObject *player1 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"hhzaaa"];
+    NSManagedObject *player2 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"hhzaaaz"];
     [dm saveRecord:player1];
     [dm saveRecord:player2];
     [dm readAll:@"Player"];
@@ -49,8 +49,6 @@
             [lm testOnDoc:doc];
         }];
     }
-    
-    
     else {
         NSLog(@"inexist");
         [doc saveToURL:nsurl forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL isSuccess) {

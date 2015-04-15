@@ -10,7 +10,7 @@
 
 @interface FSTestSuit : NSObject
 
--(void)startTest;
+-(void) startTest;
 -(void) startWithModel;
 
 @end

@@ -12,6 +12,8 @@
 #import "NSTestSuite.h"
 #import "NS+FSTestSuite.h"
 #import "MapAppDelegate.h"
+#import "ImgAppDelegate.h"
+#import "WCDelegate.h"
 
 int main(int argc, char * argv[])
 {
@@ -21,8 +23,14 @@ int main(int argc, char * argv[])
         NSURL *url = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
         NSLog(@"##%@", url);
         
-        //6
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([MapAppDelegate class]));
+        //8 WC
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([WCDelegate class]));
+        
+        //7 test img
+        //return UIApplicationMain(argc, argv, nil, NSStringFromClass([ImgAppDelegate class]));
+        
+        //6 map
+        //return UIApplicationMain(argc, argv, nil, NSStringFromClass([MapAppDelegate class]));
         
         //4, download and save
         //[NS_FSTestSuite downloadAndStore];
@@ -31,8 +39,8 @@ int main(int argc, char * argv[])
         //        [NSTestSuite makeNetworkCall];
         
         //2. file test
-        //        FSTestSuit *fs = [[FSTestSuit alloc] init];
-        //        [fs startWithModel];
+//                FSTestSuit *fs = [[FSTestSuit alloc] init];
+//                [fs startWithModel];
         
         //1, start view
 //        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
