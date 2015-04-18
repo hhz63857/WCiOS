@@ -20,6 +20,16 @@
 
 @implementation PageViewController
 
+
++(PageViewController *)sharedInstance{
+    static PageViewController *_sharedInstance;
+    static dispatch_once_t m_token;
+    dispatch_once(&m_token, ^{
+        _sharedInstance = [[PageViewController alloc] init];
+    });
+    return _sharedInstance;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];

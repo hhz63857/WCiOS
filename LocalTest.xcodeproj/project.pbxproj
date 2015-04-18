@@ -40,6 +40,9 @@
 		1C0AD4FF1AD4552200A8C6BA /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0AD4FD1AD4552200A8C6BA /* MapViewController.xib */; };
 		1C0AD5021AD455FE00A8C6BA /* MapAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0AD5011AD455FE00A8C6BA /* MapAppDelegate.m */; };
 		1C0AD5041AD4599300A8C6BA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0AD5031AD4599300A8C6BA /* MapKit.framework */; };
+		1C2D279C1AE1C0BE00BF804B /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D279A1AE1C0BE00BF804B /* MainTableViewCell.m */; };
+		1C2D279D1AE1C0BE00BF804B /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2D279B1AE1C0BE00BF804B /* MainTableViewCell.xib */; };
+		1C2D27A01AE1DC8900BF804B /* WCTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D279F1AE1DC8900BF804B /* WCTask.m */; };
 		1C540E451ADE5D0C0027FFCE /* PatternSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C540E431ADE5D0C0027FFCE /* PatternSettingViewController.m */; };
 		1C540E461ADE5D0C0027FFCE /* PatternSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C540E441ADE5D0C0027FFCE /* PatternSettingViewController.xib */; };
 		1C540E4A1ADE76720027FFCE /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C540E481ADE76720027FFCE /* MainTableViewController.m */; };
@@ -130,6 +133,11 @@
 		1C0AD5001AD455FE00A8C6BA /* MapAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAppDelegate.h; sourceTree = "<group>"; };
 		1C0AD5011AD455FE00A8C6BA /* MapAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAppDelegate.m; sourceTree = "<group>"; };
 		1C0AD5031AD4599300A8C6BA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1C2D27991AE1C0BE00BF804B /* MainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
+		1C2D279A1AE1C0BE00BF804B /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
+		1C2D279B1AE1C0BE00BF804B /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
+		1C2D279E1AE1DC8900BF804B /* WCTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCTask.h; sourceTree = "<group>"; };
+		1C2D279F1AE1DC8900BF804B /* WCTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCTask.m; sourceTree = "<group>"; };
 		1C540E421ADE5D0C0027FFCE /* PatternSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatternSettingViewController.h; path = LocalTest/PatternSettingViewController.h; sourceTree = "<group>"; };
 		1C540E431ADE5D0C0027FFCE /* PatternSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatternSettingViewController.m; path = LocalTest/PatternSettingViewController.m; sourceTree = "<group>"; };
 		1C540E441ADE5D0C0027FFCE /* PatternSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PatternSettingViewController.xib; path = LocalTest/PatternSettingViewController.xib; sourceTree = "<group>"; };
@@ -359,6 +367,15 @@
 			name = map;
 			sourceTree = "<group>";
 		};
+		1C2D27A11AE1DC9100BF804B /* data */ = {
+			isa = PBXGroup;
+			children = (
+				1C2D279E1AE1DC8900BF804B /* WCTask.h */,
+				1C2D279F1AE1DC8900BF804B /* WCTask.m */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
 		1C6F20861ACD89EB00FE2F6A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +425,7 @@
 		1CD815CD1ADB55E9008A3BA1 /* WC */ = {
 			isa = PBXGroup;
 			children = (
+				1C2D27A11AE1DC9100BF804B /* data */,
 				1CD815CE1ADB55F2008A3BA1 /* UI */,
 				1CD815CF1ADB5636008A3BA1 /* WCDelegate.h */,
 				1CD815D01ADB5636008A3BA1 /* WCDelegate.m */,
@@ -433,6 +451,9 @@
 				1CD815E11ADDA834008A3BA1 /* WebViewController.h */,
 				1CD815E21ADDA834008A3BA1 /* WebViewController.m */,
 				1CD815E31ADDA834008A3BA1 /* WebViewController.xib */,
+				1C2D27991AE1C0BE00BF804B /* MainTableViewCell.h */,
+				1C2D279A1AE1C0BE00BF804B /* MainTableViewCell.m */,
+				1C2D279B1AE1C0BE00BF804B /* MainTableViewCell.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -546,6 +567,7 @@
 				1CD815E01ADCC10F008A3BA1 /* PageViewController.xib in Resources */,
 				0BE6B76F1AC993F1005017C2 /* LaunchScreen.xib in Resources */,
 				1C0AD4FF1AD4552200A8C6BA /* MapViewController.xib in Resources */,
+				1C2D279D1AE1C0BE00BF804B /* MainTableViewCell.xib in Resources */,
 				1CD815D61ADB5A1C008A3BA1 /* WelcomeViewController.xib in Resources */,
 				1C0AD4F81AD1B2B200A8C6BA /* ArticleView.xib in Resources */,
 				1C0AD4DB1ACF2BA500A8C6BA /* TestCollectionViewController.xib in Resources */,
@@ -610,12 +632,14 @@
 				1CD815D51ADB5A1C008A3BA1 /* WelcomeViewController.m in Sources */,
 				1C0AD4F41AD0835100A8C6BA /* ArticleViewController.m in Sources */,
 				0B4755441ACB3F440017CB87 /* CDSource.m in Sources */,
+				1C2D279C1AE1C0BE00BF804B /* MainTableViewCell.m in Sources */,
 				0BE6B7671AC993F1005017C2 /* ViewController.m in Sources */,
 				1CD815971AD86D07008A3BA1 /* ImgAppDelegate.m in Sources */,
 				1CD815DF1ADCC10F008A3BA1 /* PageViewController.m in Sources */,
 				0BE6B7641AC993F1005017C2 /* AppDelegate.m in Sources */,
 				1CD815E41ADDA834008A3BA1 /* WebViewController.m in Sources */,
 				0BD5BD031ACC7B7D0083A554 /* NewsBuilder.m in Sources */,
+				1C2D27A01AE1DC8900BF804B /* WCTask.m in Sources */,
 				1C6F208F1ACD8F7200FE2F6A /* AsyncNetworkDelegate.m in Sources */,
 				0BE6B7611AC993F1005017C2 /* main.m in Sources */,
 				0BE6B78A1AC99492005017C2 /* TT.m in Sources */,

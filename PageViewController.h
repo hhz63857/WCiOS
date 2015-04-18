@@ -14,7 +14,7 @@
 @property (strong, nonatomic) NSMutableArray *viewControllers;
 @property (strong, nonatomic) NSString *newWCTaskUrl;
 @property (strong, nonatomic) NSString *newWCTaskPattern;
-@property (nonatomic) NSInteger *newWCTaskType;
-
+@property (nonatomic) NSString *newWCTaskType;
++(PageViewController *)sharedInstance;
 -(void)saveNewWCTask;
 @end

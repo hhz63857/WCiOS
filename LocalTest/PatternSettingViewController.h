@@ -15,5 +15,4 @@
 @property (retain, nonatomic) IBOutlet UIView *jobDoneAnimation;
 @property (retain, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic) PageViewController *pageViewController;
-
 @end

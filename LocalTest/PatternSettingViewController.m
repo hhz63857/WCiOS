@@ -25,7 +25,8 @@
     [self.jobDoneAnimation startCanvasAnimation];
     MainTableViewController *mainVC = [MainTableViewController sharedInstance];
     self.pageViewController.newWCTaskPattern = self.textField.text;
-    self.pageViewController.newWCTaskType = [self.pickerView selectedRowInComponent:0];
+    
+    self.pageViewController.newWCTaskType = [self.pickerView.delegate pickerView:self.pickerView titleForRow:[self.pickerView selectedRowInComponent:0] forComponent:0];
     [self.pageViewController saveNewWCTask];
     [self presentViewController: mainVC animated:YES completion:nil];
 }

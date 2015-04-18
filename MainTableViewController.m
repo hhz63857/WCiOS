@@ -7,6 +7,7 @@
 //
 
 #import "MainTableViewController.h"
+#import "MainTableViewCell.h"
 #import "LocalDataModel.h"
 #define ENTITY_NAME @"WCTask"
 
@@ -27,8 +28,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"MainTableViewCell"];
+    [self loadDataFromDB];
+}
+
+- (void)loadDataFromDB {
     LocalDataModel *dm = [[LocalDataModel alloc] init];
-    [dm readAll:ENTITY_NAME];
+    self.WCTasks = [dm readAll:ENTITY_NAME];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,32 +46,41 @@
     LocalDataModel *dm = [[LocalDataModel alloc] init];
     NSManagedObject *task = [dm createRecordWithEnitityName:ENTITY_NAME Key:@"url" Value:url];
     [dm saveRecord:task];
-    [dm readAll:ENTITY_NAME];
 }
 
 #pragma mark - Table view data source
+- (IBAction)add:(UIBarButtonItem *)sender {
+    PageViewController *s = [[PageViewController alloc] init];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:s  animated:YES completion:nil];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.WCTasks count];
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+- (MainTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellWithWebView"];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"MainTableViewCell" owner:self options:nil] objectAtIndex:0];
+    }
+
+    WCTask *wt = [self.WCTasks objectAtIndex:indexPath.row];
+    [cell initWithWCTask:wt];
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 200;
+}
 
 /*
 // Override to support conditional editing of the table view.

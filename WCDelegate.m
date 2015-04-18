@@ -9,15 +9,16 @@
 #import "WCDelegate.h"
 #import "WelcomeViewController.h"
 #import "PageViewController.h"
+#import "MainTableViewController.h"
 
 @implementation WCDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    WelcomeViewController *wvc = [[WelcomeViewController alloc] init];
-    PageViewController *pvc = [[PageViewController alloc] init];
+//    PageViewController *pvc = [[PageViewController alloc] init];
+    MainTableViewController *mvc = [[MainTableViewController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];
-    self.window.rootViewController = pvc;
+    self.window.rootViewController = mvc;
     [self.window makeKeyAndVisible];
     return YES;
 }
