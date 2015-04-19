@@ -21,7 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [AsyncNetworkDelegate startAsyncDownloadDataToDB];
+    [AsyncNetworkDelegate startAsyncDownloadDataToDB:@"https://newsdigest-yql.media.yahoo.com/v2/digest?date=2015-04-01"];
     dm =  [[LocalDataModel alloc] init];
     newsList = [[NSMutableArray alloc] init];
     hashTag = 0;

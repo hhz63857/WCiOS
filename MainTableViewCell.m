@@ -16,7 +16,6 @@
 
 - (void) initWithWCTask:(WCTask *)WCTask
 {
-    NSLog(@"load web %@", WCTask.url);
     if (WCTask != nil && WCTask.url != nil) {
         [self.webPreview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:WCTask.url]]];
     }

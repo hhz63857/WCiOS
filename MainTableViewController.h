@@ -14,4 +14,5 @@
 
 +(MainTableViewController *)sharedInstance;
 -(void) addTaskWithUrl:(NSString *)url Patterns:(NSString *)patterns Type:(NSInteger)type;
+-(void) refreshAllAsyn;
 @end

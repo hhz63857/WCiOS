@@ -14,11 +14,12 @@
 @implementation WCDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    PageViewController *pvc = [[PageViewController alloc] init];
-    MainTableViewController *mvc = [[MainTableViewController alloc] init];
+    [[MainTableViewController sharedInstance] refreshAllAsyn];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];
-    self.window.rootViewController = mvc;
+
+    //todo check see if show tutorial
+    self.window.rootViewController = [MainTableViewController sharedInstance];
     [self.window makeKeyAndVisible];
     return YES;
 }

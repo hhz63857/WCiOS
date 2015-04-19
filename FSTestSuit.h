@@ -12,5 +12,6 @@
 
 -(void) startTest;
 -(void) startWithModel;
+-(void) testUpdate;
 
 @end

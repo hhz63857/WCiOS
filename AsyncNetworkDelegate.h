@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NetworkCallContext.h"
 
 @interface AsyncNetworkDelegate : NSObject
 
-+(void)startAsyncDownloadDataToDB;
-+(void)downloadAndParseAndSaveToDB;
++(void)startAsyncDownloadDataToDB:(id<NetworkCallContext> *) context;
++(void)downloadAndParseAndSaveToDB:(id<NetworkCallContext> *) context;
 @end

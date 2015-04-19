@@ -16,15 +16,23 @@
         <attribute name="temp2" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity1" inverseName="newRelationship" inverseEntity="Entity1" syncable="YES"/>
     </entity>
-    <entity name="WCTask" syncable="YES">
+    <entity name="WCTask" representedClassName="WCTask" syncable="YES">
+        <attribute name="changed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="pattern" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patternCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="WCWebPage" representedClassName="WCWebPage" syncable="YES">
+        <attribute name="hashcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="html" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Entity1" positionX="-45" positionY="-18" width="128" height="88"/>
         <element name="News" positionX="-45" positionY="173" width="128" height="73"/>
         <element name="Player" positionX="250" positionY="-18" width="128" height="118"/>
-        <element name="WCTask" positionX="99" positionY="90" width="128" height="88"/>
+        <element name="WCTask" positionX="169" positionY="216" width="128" height="118"/>
+        <element name="WCWebPage" positionX="99" positionY="135" width="128" height="90"/>
     </elements>
 </model>

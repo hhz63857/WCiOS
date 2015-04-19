@@ -14,6 +14,7 @@
 #import "MapAppDelegate.h"
 #import "ImgAppDelegate.h"
 #import "WCDelegate.h"
+#import "RegexUtilTest.h"
 
 int main(int argc, char * argv[])
 {
@@ -23,8 +24,11 @@ int main(int argc, char * argv[])
         NSURL *url = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
         NSLog(@"##%@", url);
         
+        //9 regex test
+//        [RegexUtilTest testRegex];
+        
         //8 WC
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([WCDelegate class]));
+//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([WCDelegate class]));
         
         //7 test img
         //return UIApplicationMain(argc, argv, nil, NSStringFromClass([ImgAppDelegate class]));
@@ -39,8 +43,9 @@ int main(int argc, char * argv[])
         //        [NSTestSuite makeNetworkCall];
         
         //2. file test
-//                FSTestSuit *fs = [[FSTestSuit alloc] init];
-//                [fs startWithModel];
+        FSTestSuit *fs = [[FSTestSuit alloc] init];
+        [fs startWithModel];
+        [fs testUpdate];
         
         //1, start view
 //        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));

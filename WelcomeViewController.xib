@@ -22,25 +22,39 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="27" y="8" width="320" height="85"/>
+                        <rect key="frame" x="27" y="48" width="320" height="85"/>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STEP 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3w-bR-nUx">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input a keyword and a web page. We will be keep monitoring that 24/7 and notify you immediately!!!" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM7-sK-RlB">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="27" y="318" width="320" height="119"/>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6I-xx-of7">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="42"/>
+                    <color key="backgroundColor" red="0.27943963970000002" green="1" blue="0.7187089338" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <state key="normal" title="GO!">
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="0.0" y="588" width="375" height="39"/>
+                    </variation>
+                    <connections>
+                        <action selector="clickGo:" destination="-1" eventType="touchUpInside" id="jA5-nb-qGV"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are a webpage monitor app." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3w-bR-nUx">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="27" y="101" width="320" height="48"/>
-                    </variation>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHOOSE YOUR WEBPAGE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKM-3i-GzA">
-                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="27" y="297" width="320" height="74"/>
+                        <rect key="frame" x="27" y="204" width="320" height="48"/>
                     </variation>
                 </label>
             </subviews>
@@ -49,33 +63,20 @@
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="RjC-1a-VEb"/>
+                    <exclude reference="YM7-sK-RlB"/>
+                    <exclude reference="w6I-xx-of7"/>
                     <exclude reference="D3w-bR-nUx"/>
-                    <exclude reference="RKM-3i-GzA"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
                     <include reference="RjC-1a-VEb"/>
+                    <include reference="YM7-sK-RlB"/>
+                    <include reference="w6I-xx-of7"/>
                     <include reference="D3w-bR-nUx"/>
-                    <include reference="RKM-3i-GzA"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="369" y="298"/>
+            <point key="canvasLocation" x="368.5" y="297.5"/>
         </view>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="w6I-xx-of7">
-            <rect key="frame" x="0.0" y="0.0" width="46" height="42"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-            <state key="normal" title="GO!" image="Image">
-                <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <connections>
-                <action selector="clickGo:" destination="-1" eventType="touchUpInside" id="jA5-nb-qGV"/>
-            </connections>
-            <point key="canvasLocation" x="369" y="448"/>
-        </button>
     </objects>
-    <resources>
-        <image name="Image" width="600" height="593"/>
-    </resources>
 </document>

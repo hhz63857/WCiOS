@@ -26,7 +26,6 @@
     for (NSDictionary* dic in arr) {
         NSManagedObject *news1 = [dm createRecordWithEnitityName:@"News" Dict:
                                   dic];
-        [dm saveRecord:news1];
     }
     
     [dm readAll:@"News"];

@@ -15,9 +15,10 @@
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
++(instancetype)sharedInstance;
 -(NSManagedObject*)createRecordWithEnitityName:(NSString *)entityName Key:(NSString*)key Value:(NSString *)value;
 -(NSManagedObject*)createRecordWithEnitityName:(NSString *)entityName Dict:(NSDictionary*)dict;
 - (void)saveRecord:(NSManagedObject*)record;
 -(NSArray*) readAll:(NSString *)entity;
-
+-(NSArray *) get :(NSString *) entity : (NSString *) predicateFormat value: (NSString *) value;
 @end

@@ -32,6 +32,23 @@
     [dm readAll:@"Player"];
 }
 
+-(void) testUpdate
+{
+    LocalDataModel *dm = [[LocalDataModel alloc] init];
+    NSManagedObject *player1 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"cc"];
+    NSManagedObject *player2 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"cc1"];
+    [dm saveRecord:player1];
+    [dm saveRecord:player2];
+    [dm readAll:@"Player"];
+    
+    NSArray *parr = [dm get:@"Player" :@"name == %@" value:@"cc"] ;
+    NSManagedObject *paa = [parr objectAtIndex:0];
+    [paa setValue:@"caccc" forKey:@"name"];
+    [dm saveRecord:paa];
+    NSArray *a = [dm readAll:@"Player"];
+    NSArray *pabb = [dm get:@"Player" :@"name == %@" value:@"caccc"] ;
+}
+
 -(void) startTest
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];

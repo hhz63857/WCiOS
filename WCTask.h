@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NetworkCallContext.h"
+#import <CoreData/CoreData.h>
+#import "DataEntryDelegate.h"
 
-@interface WCTask : NSObject
+@interface WCTask : NSManagedObject<NetworkCallContext, DataEntryDelegate>
 @property (nonatomic) NSString *url;
 @property (nonatomic) NSString *type;
 @property (nonatomic) NSString *pattern;
+@property (nonatomic) NSInteger patternCount;
+@property (nonatomic) BOOL changed;
 @end

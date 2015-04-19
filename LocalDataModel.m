@@ -7,9 +7,18 @@
 //
 
 #import "LocalDataModel.h"
-#define PLAYER_DOC_NAME @"WCCC.sqlite"
+#import "Constant.h"
 
 @implementation LocalDataModel
+
++(instancetype)sharedInstance{
+    static LocalDataModel *_sharedInstance;
+    static dispatch_once_t m_token;
+    dispatch_once(&m_token, ^{
+        _sharedInstance = [[LocalDataModel alloc] init];
+    });
+    return _sharedInstance;
+}
 
 - (NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext) {
@@ -111,5 +120,16 @@
     return arr;
 }
 
+-(NSArray *) get :(NSString *) entity : (NSString *) predicateFormat value: (NSString *) value{
+    NSEntityDescription *description = [NSEntityDescription entityForName:entity inManagedObjectContext:self.managedObjectContext];
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    [req setEntity:description];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateFormat, value];
+    [req setPredicate:predicate];
+    NSError *error;
+    NSArray *arr = [self.managedObjectContext executeFetchRequest:req error:&error];
+    return arr;
+}
 
 @end

@@ -40,6 +40,10 @@
 		1C0AD4FF1AD4552200A8C6BA /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0AD4FD1AD4552200A8C6BA /* MapViewController.xib */; };
 		1C0AD5021AD455FE00A8C6BA /* MapAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0AD5011AD455FE00A8C6BA /* MapAppDelegate.m */; };
 		1C0AD5041AD4599300A8C6BA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0AD5031AD4599300A8C6BA /* MapKit.framework */; };
+		1C1550DC1AE372D80038EBBE /* RegexUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1550DB1AE372D80038EBBE /* RegexUtil.m */; };
+		1C1550E01AE373070038EBBE /* RegexUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1550DF1AE373070038EBBE /* RegexUtilTest.m */; };
+		1C1550E31AE3766B0038EBBE /* WCWebPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1550E21AE3766B0038EBBE /* WCWebPage.m */; };
+		1C1550E71AE467F20038EBBE /* LocalDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1550E61AE467F20038EBBE /* LocalDataService.m */; };
 		1C2D279C1AE1C0BE00BF804B /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D279A1AE1C0BE00BF804B /* MainTableViewCell.m */; };
 		1C2D279D1AE1C0BE00BF804B /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2D279B1AE1C0BE00BF804B /* MainTableViewCell.xib */; };
 		1C2D27A01AE1DC8900BF804B /* WCTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D279F1AE1DC8900BF804B /* WCTask.m */; };
@@ -133,6 +137,17 @@
 		1C0AD5001AD455FE00A8C6BA /* MapAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAppDelegate.h; sourceTree = "<group>"; };
 		1C0AD5011AD455FE00A8C6BA /* MapAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAppDelegate.m; sourceTree = "<group>"; };
 		1C0AD5031AD4599300A8C6BA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1C1550D11AE2893F0038EBBE /* NetworkCallContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkCallContext.h; sourceTree = "<group>"; };
+		1C1550D81AE34B590038EBBE /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		1C1550DA1AE372D80038EBBE /* RegexUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexUtil.h; sourceTree = "<group>"; };
+		1C1550DB1AE372D80038EBBE /* RegexUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexUtil.m; sourceTree = "<group>"; };
+		1C1550DE1AE373070038EBBE /* RegexUtilTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexUtilTest.h; sourceTree = "<group>"; };
+		1C1550DF1AE373070038EBBE /* RegexUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexUtilTest.m; sourceTree = "<group>"; };
+		1C1550E11AE3766B0038EBBE /* WCWebPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCWebPage.h; sourceTree = "<group>"; };
+		1C1550E21AE3766B0038EBBE /* WCWebPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCWebPage.m; sourceTree = "<group>"; };
+		1C1550E51AE467F20038EBBE /* LocalDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataService.h; sourceTree = "<group>"; };
+		1C1550E61AE467F20038EBBE /* LocalDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataService.m; sourceTree = "<group>"; };
+		1C1550E81AE469450038EBBE /* DataEntryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntryDelegate.h; sourceTree = "<group>"; };
 		1C2D27991AE1C0BE00BF804B /* MainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
 		1C2D279A1AE1C0BE00BF804B /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
 		1C2D279B1AE1C0BE00BF804B /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
@@ -367,11 +382,50 @@
 			name = map;
 			sourceTree = "<group>";
 		};
+		1C1550D71AE34B470038EBBE /* config */ = {
+			isa = PBXGroup;
+			children = (
+				1C1550D81AE34B590038EBBE /* Constant.h */,
+			);
+			name = config;
+			sourceTree = "<group>";
+		};
+		1C1550D91AE372C80038EBBE /* util */ = {
+			isa = PBXGroup;
+			children = (
+				1C1550DA1AE372D80038EBBE /* RegexUtil.h */,
+				1C1550DB1AE372D80038EBBE /* RegexUtil.m */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		1C1550DD1AE372FB0038EBBE /* test */ = {
+			isa = PBXGroup;
+			children = (
+				1C1550DE1AE373070038EBBE /* RegexUtilTest.h */,
+				1C1550DF1AE373070038EBBE /* RegexUtilTest.m */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+		1C1550E41AE467DF0038EBBE /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1C1550E51AE467F20038EBBE /* LocalDataService.h */,
+				1C1550E61AE467F20038EBBE /* LocalDataService.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		1C2D27A11AE1DC9100BF804B /* data */ = {
 			isa = PBXGroup;
 			children = (
+				1C1550E11AE3766B0038EBBE /* WCWebPage.h */,
+				1C1550E21AE3766B0038EBBE /* WCWebPage.m */,
 				1C2D279E1AE1DC8900BF804B /* WCTask.h */,
 				1C2D279F1AE1DC8900BF804B /* WCTask.m */,
+				1C1550D11AE2893F0038EBBE /* NetworkCallContext.h */,
+				1C1550E81AE469450038EBBE /* DataEntryDelegate.h */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -425,6 +479,10 @@
 		1CD815CD1ADB55E9008A3BA1 /* WC */ = {
 			isa = PBXGroup;
 			children = (
+				1C1550E41AE467DF0038EBBE /* model */,
+				1C1550DD1AE372FB0038EBBE /* test */,
+				1C1550D91AE372C80038EBBE /* util */,
+				1C1550D71AE34B470038EBBE /* config */,
 				1C2D27A11AE1DC9100BF804B /* data */,
 				1CD815CE1ADB55F2008A3BA1 /* UI */,
 				1CD815CF1ADB5636008A3BA1 /* WCDelegate.h */,
@@ -624,12 +682,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B4755241ACAFA240017CB87 /* TypeTest.m in Sources */,
+				1C1550E01AE373070038EBBE /* RegexUtilTest.m in Sources */,
 				0B4755491ACC5EB20017CB87 /* FSTestSuit.m in Sources */,
+				1C1550E71AE467F20038EBBE /* LocalDataService.m in Sources */,
 				0B47554C1ACC6A830017CB87 /* LocalDataModel.m in Sources */,
 				1C6F208C1ACD8C1E00FE2F6A /* News.m in Sources */,
 				1C0AD4DA1ACF2BA500A8C6BA /* TestCollectionViewController.m in Sources */,
 				1C540E451ADE5D0C0027FFCE /* PatternSettingViewController.m in Sources */,
 				1CD815D51ADB5A1C008A3BA1 /* WelcomeViewController.m in Sources */,
+				1C1550DC1AE372D80038EBBE /* RegexUtil.m in Sources */,
 				1C0AD4F41AD0835100A8C6BA /* ArticleViewController.m in Sources */,
 				0B4755441ACB3F440017CB87 /* CDSource.m in Sources */,
 				1C2D279C1AE1C0BE00BF804B /* MainTableViewCell.m in Sources */,
@@ -657,6 +718,7 @@
 				1CD815D11ADB5636008A3BA1 /* WCDelegate.m in Sources */,
 				0B47551E1ACAF7AA0017CB87 /* Model.xcdatamodeld in Sources */,
 				1C0AD4FE1AD4552200A8C6BA /* MapViewController.m in Sources */,
+				1C1550E31AE3766B0038EBBE /* WCWebPage.m in Sources */,
 				0B4755521ACC75BB0017CB87 /* NSTestSuite.m in Sources */,
 				1C0AD4EE1AD077C600A8C6BA /* HomeContrller.m in Sources */,
 			);
