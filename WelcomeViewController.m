@@ -7,6 +7,7 @@
 //
 
 #import "WelcomeViewController.h"
+#import "BackgroundUtil.h"
 
 @interface WelcomeViewController ()
 
@@ -16,10 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//    self.goButton.frame = CGRectMake(150, 400, 63, 59);
-//    self.stepLabel.text = [@"STEP " stringByAppendingFormat:@"%d", self.index];
+    [self.view addSubview:self.welcomeLabel];
     [self.view addSubview:self.goButton];
+    [self.view addSubview:self.introLabel];
+    self.view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self performWelcomeLabel];
+}
+
+-(void)performWelcomeLabel
+{
+    self.welcomeLabel.text = @"WELCOME";
+    self.welcomeLabel.animationDuration = 2;
+    self.welcomeLabel.characterAnimationOffset = 0.5;
+    
+    self.welcomeLabel.text = @"WELCOME!";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +60,8 @@
 - (void)dealloc {
     [_goButton release];
     [_stepLabel release];
+    [_welcomeLabel release];
+    [_introLabel release];
     [super dealloc];
 }
 @end

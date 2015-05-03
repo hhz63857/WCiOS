@@ -14,7 +14,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-LTMorphingLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ObjectiveSugar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-TOMSMorphingLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>393C40D766A059710249C23C</key>
+		<key>0B0C4A814DC2F5FEF011E654</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B943B49D8763A8C9CB6B58B</key>
+		<key>0D486A21209A82B7482082CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C274A919C9F8A6FF9C46D54</key>
+		<key>707A654711105BB9B867236B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F5F09A53235B0DC8B6DEAE9</key>
+		<key>7156E90FC41C1671EFD094F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>763EB9468CA92BFFBFE11ECD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F1935819D44001DC6F774D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B36CC3E7BB9ABB77226D9C10</key>
 		<dict>
 			<key>primary</key>
 			<true/>

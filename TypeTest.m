@@ -26,15 +26,9 @@
     [c print];
     [t print];
     
-    [s release];
-    [c.p release];
-    [t.cp release];
     [c print];
     [t print];
     
-    NSLog(@"123 %l", [s retainCount]);
-    
-    [s dealloc];
     [c print];
     [t print];
 }

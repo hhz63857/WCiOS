@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "DataEntryDelegate.h"
+#import "NetworkCallContext.h"
+#import "BaseEntity.h"
 
-
-@interface WCWebPage : NSManagedObject<DataEntryDelegate>
-
+@interface WCWebPage : BaseEntity<NetworkCallContext, DataEntryDelegate>
 @property (nonatomic, retain) NSString * url;
-@property (nonatomic, retain) NSString * html;
 @property (nonatomic, retain) NSString * hashcode;
+@property (nonatomic, retain) NSData *image;
 
+-(instancetype)initWithUrl:(NSString *)url hashcode:(NSString *)hashcode;
+-(void)setUrl:(NSString *)url;
 @end

@@ -8,13 +8,13 @@
 
 #import "NewsViewController.h"
 #import "AsyncNetworkDelegate.h"
-#import "LocalDataModel.h"
+#import "SQLiteDataService.h"
 #import "News.h"
 
 @implementation NewsViewController
 {
     NSMutableArray *newsList;
-    LocalDataModel *dm;
+    SQLiteDataService *dm;
     long hashTag;
 }
 
@@ -22,7 +22,7 @@
 {
     [super viewDidLoad];
     [AsyncNetworkDelegate startAsyncDownloadDataToDB:@"https://newsdigest-yql.media.yahoo.com/v2/digest?date=2015-04-01"];
-    dm =  [[LocalDataModel alloc] init];
+    dm = [SQLiteDataService sharedInstance];
     newsList = [[NSMutableArray alloc] init];
     hashTag = 0;
 }

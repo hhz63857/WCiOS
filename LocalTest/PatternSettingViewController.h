@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "PageViewController.h"
 
-@interface PatternSettingViewController : UIViewController<UIPickerViewDelegate>
+@interface PatternSettingViewController : UIViewController<UIPickerViewDelegate, UITextFieldDelegate>
 @property (retain, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (retain, nonatomic) IBOutlet UIButton *jobDoneButton;
 @property (retain, nonatomic) IBOutlet UIView *jobDoneAnimation;
 @property (retain, nonatomic) IBOutlet UITextField *textField;
-@property (nonatomic) PageViewController *pageViewController;
+@property (retain, nonatomic) IBOutlet UITextField *nicknameField;
+@property (strong, nonatomic) PageViewController *pageViewController;
 @end

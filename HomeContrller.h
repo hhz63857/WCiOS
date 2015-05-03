@@ -11,8 +11,8 @@
 
 @interface HomeContrller : NSObject
 
-@property(nonatomic, readonly) UINavigationController *mainNavi;
-@property(nonatomic) UINavigationController *mainNaviController;
+@property(strong, nonatomic, readonly) UINavigationController *mainNavi;
+@property(strong, nonatomic) UINavigationController *mainNaviController;
 
 +(HomeContrller *)sharedInstance;
 -(void)setupMainNavigationControllerStack;

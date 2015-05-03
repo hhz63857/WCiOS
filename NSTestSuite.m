@@ -13,10 +13,15 @@
 
 +(void) makeNetworkCall
 {
-    NSString *url = @"https://newsdigest-yql.media.yahoo.com/v2/digest?date=2015-04-01";
+    NSString *url = @"http://www.mitbbs.com/bbsdoc/JobHunting.html";
     NSURL *nsurl = [NSURL URLWithString:url];
     NSString *jsonString = [NetworkService performStoreRequestWithURL:nsurl];
-    NSDictionary *dict = [NetworkService parseJSON:jsonString];
+    
+//    url = @"http://www.google.com";
+//    nsurl = [NSURL URLWithString:url];
+//    jsonString = [NetworkService performStoreRequestWithURL:nsurl];
+
+//    NSDictionary *dict = [NetworkService parseJSON:jsonString];
 }
 
 @end

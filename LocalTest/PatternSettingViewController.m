@@ -7,14 +7,17 @@
 //
 
 #import "PatternSettingViewController.h"
-#import "MainTableViewController.h"
+#import "MainViewController.h"
 #import "WCDelegate.h"
 #import "Constant.h"
+#import "BackgroundUtil.h"
 #define ENTITY_NAME @"WCTask"
 
 @interface PatternSettingViewController ()
 
 @end
+
+extern NSString *backgroundImagePath;
 
 @implementation PatternSettingViewController
 
@@ -22,20 +25,71 @@
     [super viewDidLoad];
     self.pickerView.delegate = self;
     self.pickerView.showsSelectionIndicator = YES;
+    self.pickerView.alpha = 1;
+    [self.pickerView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:self.pickerView];
-}
-- (IBAction)jobDone:(id)sender {
-    [self.jobDoneAnimation startCanvasAnimation];
-    MainTableViewController *mainVC = [MainTableViewController sharedInstance];
-    NSLog(@"%@", [NSThread currentThread]);
-    self.pageViewController.newWCTaskPattern = self.textField.text;
+    [self.textField setReturnKeyType:UIReturnKeyDone];
+    self.textField.delegate = self;
     
+    [self.nicknameField setReturnKeyType:UIReturnKeyDone];
+    self.nicknameField.delegate = self;
+    self.view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES];
+}
+
+- (IBAction)jobDone:(id)sender {
+//    [self.jobDoneAnimation startCanvasAnimation];
+    self.pageViewController.newWCTaskPattern = self.textField.text;
     self.pageViewController.newWCTaskType = [self.pickerView.delegate pickerView:self.pickerView titleForRow:[self.pickerView selectedRowInComponent:0] forComponent:0];
+    self.pageViewController.newWCTaskNickname = self.nicknameField.text;
     [self.pageViewController saveNewWCTask];
     
     UIWindow *window = [(WCDelegate *)[[UIApplication sharedApplication] delegate] window];
-    window.rootViewController = mainVC;
+    window.rootViewController = [MainViewController sharedInstance];
     [window makeKeyAndVisible];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [textField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField*)aTextField
+{
+    [aTextField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)disablesAutomaticKeyboardDismissal
+{
+    return NO;
+}
+
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == self.nicknameField) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    }
+    return YES;
+}
+
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if (textField == self.nicknameField) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+        [self.view endEditing:YES];
+    }
+    return YES;
+}
+
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    // Assign new frame to your view
+    [self.view setFrame:CGRectMake(0,-110,self.view.frame.size.width,self.view.frame.size.height)];
+}
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    [self.view setFrame:CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,11 +159,12 @@
 }
 
 - (void)dealloc {
-    [_pickerView release];
-    [_pickerView release];
-    [_jobDoneButton release];
-    [_jobDoneAnimation release];
-    [_textField release];
-    [super dealloc];
+//    [_pickerView release];
+//    [_pickerView release];
+//    [_jobDoneButton release];
+//    [_jobDoneAnimation release];
+//    [_textField release];
+//    [_nicknameField release];
+//    [super dealloc];
 }
 @end

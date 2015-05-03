@@ -8,7 +8,8 @@
 
 #import "FSTestSuit.h"
 #import "LocalDataManager.h"
-#import "LocalDataModel.h"
+#import "SQLiteDataService.h"
+#import "WCTask.h"
 
 @implementation FSTestSuit
 {
@@ -22,9 +23,18 @@
     return self;
 }
 
+-(void) testSaveDirectly
+{
+    SQLiteDataService *dm = [SQLiteDataService sharedInstance];
+    WCTask *wt = [NSEntityDescription insertNewObjectForEntityForName:@"WCTask" inManagedObjectContext:[dm managedObjectContext]];
+    wt.url = @"www.www.com";
+    wt.lastUpdate = [[NSDate alloc] init];
+    [dm saveRecord:wt];
+}
+
 -(void) startWithModel
 {
-    LocalDataModel *dm = [[LocalDataModel alloc] init];
+    SQLiteDataService *dm = [SQLiteDataService sharedInstance];
     NSManagedObject *player1 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"hhzaaa"];
     NSManagedObject *player2 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"hhzaaaz"];
     [dm saveRecord:player1];
@@ -34,7 +44,7 @@
 
 -(void) testUpdate
 {
-    LocalDataModel *dm = [[LocalDataModel alloc] init];
+    SQLiteDataService *dm = [SQLiteDataService sharedInstance];
     NSManagedObject *player1 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"cc"];
     NSManagedObject *player2 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"cc1"];
     [dm saveRecord:player1];
@@ -47,6 +57,16 @@
     [dm saveRecord:paa];
     NSArray *a = [dm readAll:@"Player"];
     NSArray *pabb = [dm get:@"Player" :@"name == %@" value:@"caccc"] ;
+}
+
+-(void) testExePredication
+{
+    SQLiteDataService *dm = [SQLiteDataService sharedInstance];
+    NSManagedObject *player1 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"r1"];
+    NSManagedObject *player2 = [dm createRecordWithEnitityName:@"Player" Key:@"name" Value:@"r2"];
+    [dm saveRecord:player1];
+    [dm saveRecord:player2];
+    NSArray * a = [dm exePredication:@"Player" predication:@"name = %@", @"r1"];
 }
 
 -(void) startTest
@@ -78,8 +98,6 @@
             NSLog(@"inexist => handler");
         }];
     }
-    
-    
     
     NSLog(@"end");
     while (YES) {

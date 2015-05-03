@@ -10,9 +10,14 @@
 #import "WelcomeViewController.h"
 #import "WebViewController.h"
 #import "PatternSettingViewController.h"
-#import "LocalDataModel.h"
+#import "SQLiteDataService.h"
+#import "Constant.h"
+#import "DataModel.h"
+#import "WCTask.h"
+#import "WCWebPage.h"
+#import "MainTableViewController.h"
+
 #define PAGE_COUNT 3
-#define ENTITY_NAME @"WCTask"
 
 @interface PageViewController ()
 
@@ -35,9 +40,9 @@
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     self.pageController.dataSource = self;
     [[self.pageController view] setFrame:[[self view] bounds]];
-
+    
     [self initViewControllers];
-
+    
     [self addChildViewController:self.pageController];
     [[self view] addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
@@ -46,7 +51,7 @@
 - (void) initViewControllers
 {
     self.viewControllers = [[NSMutableArray alloc] initWithCapacity:PAGE_COUNT];
-
+    
     //page 0 -> welcome page
     WelcomeViewController *wVC = [[WelcomeViewController alloc] init];
     self.viewControllers[0] = wVC;
@@ -58,7 +63,7 @@
     WebViewController *webVC = [[WebViewController alloc] init];
     webVC.pageViewController = self;
     [self.viewControllers addObject:webVC];
-
+    
     //page 2 -> pattern setting page
     PatternSettingViewController *pVC = [[PatternSettingViewController alloc] init];
     pVC.pageViewController = self;
@@ -71,18 +76,20 @@
 }
 
 -(void)saveNewWCTask {
-    LocalDataModel *dm = [[LocalDataModel alloc] init];
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setValue:self.newWCTaskUrl forKey:@"url"];
-    [dict setValue:self.newWCTaskPattern forKey:@"pattern"];
-    [dict setValue:self.newWCTaskType forKey:@"type"];
+    DataModel * wtDM = [DataModel getSharedInstance:WCTASK_ENTITY_NAME];
+    DataModel * wpDM = [DataModel getSharedInstance:WCWEBPAGE_ENTITY_NAME];
+
+    WCTask *wt = [[WCTask alloc] initWithUrl:self.newWCTaskUrl Pattern:self.newWCTaskPattern Type:self.newWCTaskType PatternCount:0 Nickname:self.newWCTaskNickname];
     
-    NSManagedObject *task = [dm createRecordWithEnitityName:ENTITY_NAME Dict:dict];
-    [dm saveRecord:task];
+    WCWebPage *wp = [[WCWebPage alloc] initWithUrl:self.newWCTaskUrl hashcode:nil];
+    
+    [wtDM saveRecord:wt];
+    [wpDM saveRecord:wp];
+
+    [[MainTableViewController sharedInstance].tableView reloadData];
 }
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index {
-    NSLog(@"%zd", index);
     if(index >= [self.viewControllers count]) {
         return nil;
     }
@@ -118,13 +125,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

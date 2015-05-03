@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PageViewController.h"
+#import <TOMSMorphingLabel/TOMSMorphingLabel.h>
 
 @interface WelcomeViewController : UIViewController
 @property (retain, nonatomic) IBOutlet UIButton *goButton;
 @property (retain, nonatomic) IBOutlet UILabel *stepLabel;
-@property (nonatomic) PageViewController *pageViewController;
+@property (strong, nonatomic) PageViewController *pageViewController;
+@property (retain, nonatomic) IBOutlet TOMSMorphingLabel *welcomeLabel;
+@property (retain, nonatomic) IBOutlet UILabel *introLabel;
 @property NSInteger index;
 @end

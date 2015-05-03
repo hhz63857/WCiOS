@@ -10,6 +10,6 @@
 
 @interface ImgAppDelegate : AppDelegate
 
-@property(nonatomic) UIViewController *imgVC;
+@property(strong, nonatomic) UIViewController *imgVC;
 
 @end

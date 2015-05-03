@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "PageViewController.h"
 
-@interface MainTableViewController : UITableViewController
-@property(strong, nonatomic) NSArray *WCTasks;
+@interface MainTableViewController : UITableViewController<UIBarPositioning, UIScrollViewDelegate>
+@property(strong, nonatomic) NSMutableArray *WCTasks;
+@property(strong, nonatomic) NSMutableArray *WCPages;
+@property(strong, nonatomic) UIRefreshControl *refreshControl;
 
 +(MainTableViewController *)sharedInstance;
--(void) addTaskWithUrl:(NSString *)url Patterns:(NSString *)patterns Type:(NSInteger)type;
+//-(void) addTaskWithUrl:(NSString *)url Patterns:(NSString *)patterns Type:(NSString *)type;
 -(void) refreshAllAsyn;
 @end

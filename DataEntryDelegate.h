@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
+//Placeholder
 @protocol DataEntryDelegate <NSObject>
--(NSString *)getKeyFieldName;
 @end

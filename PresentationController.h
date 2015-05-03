@@ -22,11 +22,11 @@ typedef NS_ENUM(NSInteger, MenuViewControllerType){
 
 
 @interface PresentationController : UIViewController
-@property (nonatomic) UIViewController *contentController;
-@property (nonatomic) UIView *contentContainerView;
-@property (nonatomic) NSMutableDictionary *VCs;
-@property (nonatomic) NSMutableDictionary *presenters;
-@property (nonatomic) NSMutableDictionary *menuContainerViews;
+@property (strong, nonatomic) UIViewController *contentController;
+@property (strong, nonatomic) UIView *contentContainerView;
+@property (strong, nonatomic) NSMutableDictionary *VCs;
+@property (strong, nonatomic) NSMutableDictionary *presenters;
+@property (strong, nonatomic) NSMutableDictionary *menuContainerViews;
 
 +(PresentationController *)sharedInstance;
 -(void)setContentController:(UIViewController *)navi;

@@ -13,5 +13,6 @@
 -(void) startTest;
 -(void) startWithModel;
 -(void) testUpdate;
-
+-(void) testExePredication;
+-(void) testSaveDirectly;
 @end

@@ -11,6 +11,6 @@
 #import "AppDelegate.h"
 
 @interface MapAppDelegate : AppDelegate
-@property(nonatomic) UINavigationController *mapNaviController;
+@property(strong, nonatomic) UINavigationController *mapNaviController;
 
 @end

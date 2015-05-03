@@ -54,9 +54,27 @@
 #define COCOAPODS_VERSION_MINOR_Canvas 1
 #define COCOAPODS_VERSION_PATCH_Canvas 2
 
+// GPUImage
+#define COCOAPODS_POD_AVAILABLE_GPUImage
+#define COCOAPODS_VERSION_MAJOR_GPUImage 0
+#define COCOAPODS_VERSION_MINOR_GPUImage 1
+#define COCOAPODS_VERSION_PATCH_GPUImage 6
+
+// LTMorphingLabel
+#define COCOAPODS_POD_AVAILABLE_LTMorphingLabel
+#define COCOAPODS_VERSION_MAJOR_LTMorphingLabel 0
+#define COCOAPODS_VERSION_MINOR_LTMorphingLabel 0
+#define COCOAPODS_VERSION_PATCH_LTMorphingLabel 6
+
 // ObjectiveSugar
 #define COCOAPODS_POD_AVAILABLE_ObjectiveSugar
 #define COCOAPODS_VERSION_MAJOR_ObjectiveSugar 0
 #define COCOAPODS_VERSION_MINOR_ObjectiveSugar 9
 #define COCOAPODS_VERSION_PATCH_ObjectiveSugar 0
+
+// TOMSMorphingLabel
+#define COCOAPODS_POD_AVAILABLE_TOMSMorphingLabel
+#define COCOAPODS_VERSION_MAJOR_TOMSMorphingLabel 0
+#define COCOAPODS_VERSION_MINOR_TOMSMorphingLabel 5
+#define COCOAPODS_VERSION_PATCH_TOMSMorphingLabel 1
 

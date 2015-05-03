@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PageViewController.h"
+#import "NJKWebViewProgress.h"
 
-@interface WebViewController : UIViewController<UIWebViewDelegate>
+@interface WebViewController : UIViewController<UIWebViewDelegate, UITextFieldDelegate, NJKWebViewProgressDelegate>
 @property (retain, nonatomic) IBOutlet UIWebView *webView;
 @property (retain, nonatomic) IBOutlet UITextField *urlTextField;
 @property (retain, nonatomic) IBOutlet UIButton *dragableButton;
-@property (nonatomic) PageViewController *pageViewController;
+@property (strong, nonatomic) PageViewController *pageViewController;
 
 @end

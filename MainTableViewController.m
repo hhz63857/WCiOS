@@ -8,12 +8,26 @@
 
 #import "MainTableViewController.h"
 #import "MainTableViewCell.h"
-#import "LocalDataModel.h"
+#import "MainSimpleTableViewCell.h"
+#import "SQLiteDataService.h"
 #import "WCDelegate.h"
 #import "AsyncNetworkDelegate.h"
-#define ENTITY_NAME @"WCTask"
+#import "Constant.h"
+#import "DataModel.h"
+#import "WCWebPage.h"
+#import "WCTask.h"
+#import "DateFormatUtil.h"
+#import "BackgroundUtil.h"
+#import "DetailWebViewController.h"
+#import "JVFloatLabeledTextFieldViewController.h"
+#import "MainViewController.h"
 
-@interface MainTableViewController ()
+@interface MainTableViewController (){
+    DataModel *wctaskDM;
+    DataModel *wcwebpageDM;
+    NSMutableArray *cellHeightArr;
+    
+}
 
 @end
 
@@ -28,137 +42,145 @@
     return _sharedInstance;
 }
 
+-(instancetype) init{
+    self = [super init];
+    wctaskDM = [DataModel getSharedInstance:WCTASK_ENTITY_NAME];
+    wcwebpageDM = [DataModel getSharedInstance:WCWEBPAGE_ENTITY_NAME];
+    cellHeightArr = [[NSMutableArray alloc] init];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"MainTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MainSimpleTableViewCell.h" bundle:nil] forCellReuseIdentifier:@"MainSimpleTableViewCell.h"];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshAllAsyn) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
+    self.tableView.layer.borderWidth = 0;
+    self.tableView.separatorColor = [UIColor clearColor];
+}
+
+- (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar {
+    return UIBarPositionTopAttached;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"will appear");
     [self loadDataFromDB];
     [self.tableView reloadData];
 }
 
-- (void)loadDataFromDB {
-    LocalDataModel *dm = [[LocalDataModel alloc] init];
-    self.WCTasks = [dm readAll:ENTITY_NAME];
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if (indexPath.row >= 0 && indexPath.row < [self.WCTasks count]) {
+            WCTask *toRemoveWT = self.WCTasks[indexPath.row];
+            NSString *url = [toRemoveWT.url copy];
+            if (toRemoveWT != nil) {
+                [wctaskDM removeByKey:toRemoveWT.key];
+            }
+            [self.WCTasks removeObjectAtIndex:indexPath.row];
+
+            NSArray *arr = [wctaskDM getByField:@"url" fieldValue:url];
+            if (arr == nil || [arr count] == 0) {
+                [wcwebpageDM removeByKey:url];
+            }
+            
+            [self.tableView reloadData];
+        }
+    }
+}
+
+- (void)loadDataFromDB
+{
+    //todo paging
+    self.WCTasks = [NSMutableArray arrayWithArray: [wctaskDM readAll]];
+    self.WCPages = [NSMutableArray arrayWithArray: [wcwebpageDM readAll]];
+    int i = 0;
+    for (WCTask *wc in self.WCTasks) {
+        cellHeightArr[i] = [self showFullCellView:wc] ? @(115): @(44);
+        i++;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void) addTaskWithUrl:(NSString *)url Patterns:(NSString *)patterns Type:(NSInteger)type {
-    LocalDataModel *dm = [[LocalDataModel alloc] init];
-    NSManagedObject *task = [dm createRecordWithEnitityName:ENTITY_NAME Key:@"url" Value:url];
-    [dm saveRecord:task];
+    NSLog(@"Memory Exceed!!");
 }
 
 -(void) refreshAllAsyn
 {
     [self loadDataFromDB];
-    for (WCTask *wct in self.WCTasks) {
-        [AsyncNetworkDelegate startAsyncDownloadDataToDB:wct];
+    for (WCWebPage *wcw in self.WCPages) {
+        [AsyncNetworkDelegate startAsyncDownloadDataToDB:wcw];
     }
-}
-
-#pragma mark - Table view data source
-- (IBAction)add:(UIBarButtonItem *)sender {
-    PageViewController *s = [[PageViewController alloc] init];
-    //    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:s  animated:YES completion:nil];
-    
-    UIWindow *window = [(WCDelegate *)[[UIApplication sharedApplication] delegate] window];
-    window.rootViewController = s;
-    [window makeKeyAndVisible];
+    [self.tableView reloadData];
+    if (self.refreshControl) {
+        [self.refreshControl endRefreshing];
+    }
+    [[BackgroundUtil sharedInstance] randomSetBackImg];
+    [MainViewController sharedInstance].view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
     return [self.WCTasks count];
 }
 
-- (MainTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellWithWebView"];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"MainTableViewCell" owner:self options:nil] objectAtIndex:0];
-    }
-    
+-(BOOL) showFullCellView:(WCTask *)wt{
+//    if (wt.lastUpdate == nil) {
+//        return NO;
+//    }
+//    return [DateFormatUtil withinTimeElapse:wt.lastUpdate inSeconds:PATTERN_FIND_ALERT_TIME_INTERVAL];
+    return YES;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WCTask *wt = [self.WCTasks objectAtIndex:indexPath.row];
-    [cell initWithWCTask:wt];
-    return cell;
+    if ([self showFullCellView:wt]) {
+        MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellWithWebView"];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MainTableViewCell" owner:self options:nil] objectAtIndex:0];
+        }
+        [cell initWithWCTask:wt];
+        return cell;
+    } else {
+        MainSimpleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainSimpleTableViewCell"];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MainSimpleTableViewCell" owner:self options:nil] objectAtIndex:0];
+        }
+        [cell initWithWCTask:wt];
+        return cell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    return [cellHeightArr[indexPath.row] floatValue];
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    WCTask *wt = self.WCTasks[indexPath.row];
+    if (wt) {
+        DetailWebViewController *detailViewController = [[DetailWebViewController alloc] initWithUrl:wt.url andPattern:wt.pattern];
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
+        UIWindow *window = [(WCDelegate *)[[UIApplication sharedApplication] delegate] window];
+        window.rootViewController = detailViewController;
+        [window makeKeyAndVisible];
+    }
+}
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Table view delegate
- 
- // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
- - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
- // Navigation logic may go here, for example:
- // Create the next view controller.
- <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
- 
- // Pass the selected object to the new view controller.
- 
- // Push the view controller.
- [self.navigationController pushViewController:detailViewController animated:YES];
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
+- (void)dealloc {
+    [super dealloc];
+}
 @end

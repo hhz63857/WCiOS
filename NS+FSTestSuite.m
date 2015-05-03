@@ -8,7 +8,7 @@
 
 #import "NS+FSTestSuite.h"
 #import "NetworkService.h"
-#import "LocalDataModel.h"
+#import "SQLiteDataService.h"
 #import "NewsBuilder.h"
 
 @implementation NS_FSTestSuite
@@ -20,7 +20,7 @@
     NSString *jsonString = [NetworkService performStoreRequestWithURL:nsurl];
     NSDictionary *dict = [NetworkService parseJSON:jsonString];
     
-    LocalDataModel *dm = [[LocalDataModel alloc] init];
+    SQLiteDataService *dm = [SQLiteDataService sharedInstance];
 
     NSArray *arr = [NewsBuilder parse:dict];
     for (NSDictionary* dic in arr) {
