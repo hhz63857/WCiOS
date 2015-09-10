@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     ImgViewController *imgVC = [[ImgViewController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor blackColor];
+//    self.window.backgroundColor = [UIColor blackColor];
     self.window.rootViewController = imgVC;
     [self.window makeKeyAndVisible];
     return YES;

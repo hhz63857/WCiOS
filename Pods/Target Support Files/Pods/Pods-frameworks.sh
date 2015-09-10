@@ -50,6 +50,7 @@ code_sign() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'AFNetworking.framework'
   install_framework 'Canvas.framework'
+  install_framework 'FMDB.framework'
   install_framework 'GPUImage.framework'
   install_framework 'LTMorphingLabel.framework'
   install_framework 'ObjectiveSugar.framework'
@@ -58,6 +59,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'AFNetworking.framework'
   install_framework 'Canvas.framework'
+  install_framework 'FMDB.framework'
   install_framework 'GPUImage.framework'
   install_framework 'LTMorphingLabel.framework'
   install_framework 'ObjectiveSugar.framework'

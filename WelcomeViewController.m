@@ -20,7 +20,7 @@
     [self.view addSubview:self.welcomeLabel];
     [self.view addSubview:self.goButton];
     [self.view addSubview:self.introLabel];
-    self.view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES];
+    self.view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES :self.view.frame];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

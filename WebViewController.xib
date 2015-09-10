@@ -40,17 +40,6 @@
                         <action selector="goTo:" destination="-1" eventType="touchUpInside" id="ngu-y4-Vt5"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZU-ca-4ac">
-                    <rect key="frame" x="0.0" y="592" width="375" height="39"/>
-                    <color key="backgroundColor" red="0.31506786314492186" green="1" blue="0.64889228274761401" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                    <state key="normal" title="Next">
-                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="moveOn:" destination="-1" eventType="touchUpInside" id="y80-4g-JIF"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mN8-Mp-wqd">
                     <rect key="frame" x="0.0" y="96" width="35" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -72,13 +61,24 @@
                     </connections>
                 </button>
                 <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Afr-iH-5iO">
-                    <rect key="frame" x="0.0" y="135" width="375" height="458"/>
+                    <rect key="frame" x="0.0" y="135" width="375" height="495"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="fOU-PY-5WR"/>
                     </connections>
                 </webView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZU-ca-4ac">
+                    <rect key="frame" x="0.0" y="628" width="375" height="39"/>
+                    <color key="backgroundColor" red="0.31506786314492186" green="1" blue="0.64889228274761401" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <state key="normal" title="Next">
+                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="moveOn:" destination="-1" eventType="touchUpInside" id="y80-4g-JIF"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

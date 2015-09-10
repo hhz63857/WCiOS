@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "763EB9468CA92BFFBFE11ECD"
+               BlueprintIdentifier = "867963EB095C5AB3DE7DB283"
                BuildableName = "LTMorphingLabel.framework"
                BlueprintName = "Pods-LTMorphingLabel"
                ReferencedContainer = "container:Pods.xcodeproj">

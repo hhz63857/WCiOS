@@ -17,6 +17,7 @@
 #import "RegexUtilTest.h"
 #import "DataModelTest.h"
 #import "BackgroundUtil.h"
+#import "BackgroundJob.h"
 
 int tests() {
     
@@ -31,6 +32,8 @@ int main(int argc, char * argv[])
         NSURL *url = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
         NSLog(@"##%@", url);
 
+        [BackgroundJob synchronizeWCWebPageWithWCTask];
+        
         //11 test arr operation
 //        NSMutableArray *arr = [[NSMutableArray alloc] init];
 //        [arr addObject:@"123"];

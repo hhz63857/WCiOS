@@ -22,4 +22,5 @@
 -(NSArray*) readAll:(NSString *)entity;
 -(NSArray *) get :(NSString *) entity : (NSString *) predicateFormat value: (NSString *) value;
 - (NSArray *)exePredication:(NSString *)entity predication:(NSString *)predicateFormat, ...;
+- (NSManagedObjectContext *)managedObjectContext;
 @end

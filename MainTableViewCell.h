@@ -15,5 +15,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *updateInfo;
 @property (retain, nonatomic) IBOutlet UIImageView *imgView;
 - (MainTableViewCell *)initWithIndexPath:(NSIndexPath *) indexPath;
-- (void) initWithWCTask:(WCTask *)wctask;
+- (void)initWithWCTask:(WCTask *)wctask;
+- (void)updateLastUpdateLabel:(WCTask *)wctask;
 @end

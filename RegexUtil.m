@@ -7,6 +7,8 @@
 //
 
 #import "RegexUtil.h"
+#import "DataModel.h"
+#import "Constant.h"
 
 @implementation RegexUtil
 

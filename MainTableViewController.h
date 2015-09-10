@@ -17,4 +17,5 @@
 +(MainTableViewController *)sharedInstance;
 //-(void) addTaskWithUrl:(NSString *)url Patterns:(NSString *)patterns Type:(NSString *)type;
 -(void) refreshAllAsyn;
+-(void) softReloadData;
 @end

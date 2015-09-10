@@ -25,4 +25,35 @@
     return entity;
 }
 
+-(void)preSaveToDB{
+    
+}
+-(void)postSaveToDB{
+    
+}
+
+-(void)preInsertToDB{
+    
+}
+
+-(void)postInsertToDB{
+    NSLog(@"Not inherient. In Super method");
+}
+
+-(void)preUpdateToDB{
+    
+}
+
+-(void)postUpdateToDB{
+    
+}
+
+-(void)preRemoveFromDB{
+    
+}
+
+-(void)postRemoveFromDB{
+    
+}
+
 @end

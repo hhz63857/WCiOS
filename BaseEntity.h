@@ -12,4 +12,12 @@
 @interface BaseEntity : NSManagedObject
 @property (retain, nonatomic) NSString *key;
 -(instancetype)initEntity:(NSString *)entityName key:(NSString *)keyVal;
+-(void)preSaveToDB;
+-(void)postSaveToDB;
+-(void)preInsertToDB;
+-(void)postInsertToDB;
+-(void)preUpdateToDB;
+-(void)postUpdateToDB;
+-(void)preRemoveFromDB;
+-(void)postRemoveFromDB;
 @end

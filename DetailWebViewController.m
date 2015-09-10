@@ -11,6 +11,7 @@
 #import "MainViewController.h"
 #import "NJKWebViewProgressView.h"
 #import "NJKWebViewProgress.h"
+#import "Constant.h"
 
 @interface DetailWebViewController ()
 {
@@ -22,7 +23,11 @@
 @implementation DetailWebViewController
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
+    self.view.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+    
+    self.webview = [[SearchWebView alloc] initWithFrame:CGRectMake(0, WINDOW_HERDER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DETAIL_WEB_VIEW_BOTTOM_BUTTON_HEIGHT - WINDOW_HERDER_HEIGHT)];
 
     [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     [self.view addSubview:self.webview];
@@ -39,6 +44,16 @@
     _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
     _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:_progressView];
+    
+    UIButton *bottomButtom = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [bottomButtom addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomButtom setTitle:@"GO BACK" forState:UIControlStateNormal];
+    bottomButtom.frame = CGRectMake(0, self.view.frame.size.height - DETAIL_WEB_VIEW_BOTTOM_BUTTON_HEIGHT, self.view.frame.size.width, DETAIL_WEB_VIEW_BOTTOM_BUTTON_HEIGHT);
+    [bottomButtom setBackgroundColor:[UIColor colorWithRed:BACKGROUND_COLOR_R/255.0f
+                                                     green:BACKGROUND_COLOR_G/255.0f
+                                                      blue:BACKGROUND_COLOR_B/255.0f
+                                                     alpha:1.0f]];
+    [self.view addSubview:bottomButtom];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -86,5 +101,6 @@
 }
 
 - (void)dealloc {
+    [super dealloc];
 }
 @end

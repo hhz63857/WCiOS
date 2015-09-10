@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface RegexUtil : NSObject
 +(NSMutableArray *)regexGetFromString:(NSString *)source WithPattern:(NSString *)pattern;

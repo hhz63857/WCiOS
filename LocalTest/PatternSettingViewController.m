@@ -33,7 +33,7 @@ extern NSString *backgroundImagePath;
     
     [self.nicknameField setReturnKeyType:UIReturnKeyDone];
     self.nicknameField.delegate = self;
-    self.view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES];
+    self.view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES :self.view.frame];
 }
 
 - (IBAction)jobDone:(id)sender {
@@ -62,7 +62,6 @@ extern NSString *backgroundImagePath;
 {
     return NO;
 }
-
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField == self.nicknameField) {
@@ -159,12 +158,12 @@ extern NSString *backgroundImagePath;
 }
 
 - (void)dealloc {
-//    [_pickerView release];
-//    [_pickerView release];
-//    [_jobDoneButton release];
-//    [_jobDoneAnimation release];
-//    [_textField release];
-//    [_nicknameField release];
-//    [super dealloc];
+    [_pickerView release];
+    [_pickerView release];
+    [_jobDoneButton release];
+    [_jobDoneAnimation release];
+    [_textField release];
+    [_nicknameField release];
+    [super dealloc];
 }
 @end

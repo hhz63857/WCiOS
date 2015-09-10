@@ -13,7 +13,10 @@
 @property (strong, nonatomic) NSString *imgPath;
 
 +(instancetype)sharedInstance;
+-(UIImage *)blurWithCoreImage:(UIImage *)sourceImage :(CGRect)frame;
 -(void)randomSetBackImg;
--(UIColor *)getBackgroundImageWithBlur:(BOOL)blur;
--(UIImage *)getBackgroundSourceImageWithBlur:(BOOL)blur;
+-(UIColor *)getBackgroundImageWithBlur:(BOOL)blur :(CGRect)frame;
+-(UIImageView *)getBackgroundSourceImageViewWithBlur:(BOOL)blur :(CGRect)frame;
+-(UIImage *)getBackgroundSourceImageWithBlur:(BOOL)blur :(CGRect)frame;
+-(void)loadBackgroundImage :(UIView *)view;
 @end

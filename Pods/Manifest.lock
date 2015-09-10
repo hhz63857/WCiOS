@@ -21,6 +21,11 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Canvas (0.1.2)
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
   - GPUImage (0.1.6)
   - LTMorphingLabel (0.0.6)
   - ObjectiveSugar (0.9)
@@ -29,6 +34,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - Canvas
+  - FMDB
   - GPUImage (~> 0.1.4)
   - LTMorphingLabel (~> 0.0.6)
   - ObjectiveSugar (~> 0.5)
@@ -37,6 +43,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   GPUImage: 4675ce4a5370ca92fcea8623b2a08b8f0c51b940
   LTMorphingLabel: bce7121dd7a5d01b3f39f7a27e91a4d162ddea4a
   ObjectiveSugar: 18409ee1ec578dd8598b55e5008f393488dca5cf

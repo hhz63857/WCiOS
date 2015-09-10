@@ -13,11 +13,18 @@
 #import "Constant.h"
 #import "WCDelegate.h"
 #import "MainViewController.h"
+#import "DataModel.h"
+#import "WCTask.h"
+#import "WCWebPage.h"
+#import "MainTableViewController.h"
+#import "NetworkUtil.h"
+#import "AlertUtil.h"
 
 @interface NewTaskViewController (){
     UIScrollView *scrollView;
     NSString *pickerSelected;
     JVFloatLabeledTextField *urlField;
+    JVFloatLabeledTextField *nicknameField;
     JVFloatLabeledTextField *patternField;
     UILabel *showsUpLabel;
     UILabel *showsMoreLabel;
@@ -51,8 +58,14 @@
     //init
     pickerSelected = PICKER_TITLE_SHOWS_UP;
     
-    
     CGFloat kJVFieldHeight = 44.0f;
+
+    CGFloat urlFieldHeight = 60.0f;
+    CGFloat patternFieldHeight = 60.0f;
+    CGFloat nicknameFieldHeight = 60.0f;
+    CGFloat showupFieldHeight = 50.0f;
+    CGFloat showlessFieldHeight = 50.0f;
+
     CGFloat kJVFieldHMargin = 10.0f;
     CGFloat kJVFieldFontSize = 16.0f;
     CGFloat kDoneLabelFontSize = 20.0f;
@@ -82,22 +95,36 @@
     [self.view addSubview:urlField];
     urlField.translatesAutoresizingMaskIntoConstraints = NO;
     urlField.keepBaseline = 1;
+    urlField.text = @"http://www.";
+    urlField.delegate = self;
+    [urlField setReturnKeyType:UIReturnKeyDone];
+
     
     //pattern field
     patternField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
-    patternField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Key Words", @"")
+    patternField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Key Words", @"Key Words")
                                                                          attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     patternField.font = [UIFont systemFontOfSize:kJVFieldFontSize];
     patternField.floatingLabelFont = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
     patternField.floatingLabelTextColor = floatingLabelColor;
     [self.view addSubview:patternField];
     patternField.translatesAutoresizingMaskIntoConstraints = NO;
+    patternField.delegate = self;
+    [patternField setReturnKeyType:UIReturnKeyDone];
     
+
+    patternField.returnKeyType = UIReturnKeyDone;
+    patternField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    patternField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    patternField.layer.masksToBounds = YES;
+    patternField.placeholder = @"Enter Key Words Here";
+    patternField.floatingLabel.text = @"Key Words";
+
     UIView *div1 = [UIView new];
     div1.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
     [self.view addSubview:div1];
     div1.translatesAutoresizingMaskIntoConstraints = NO;
-
+    
     UIView *div2 = [UIView new];
     div2.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
     [self.view addSubview:div2];
@@ -122,22 +149,32 @@
     div6.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
     [self.view addSubview:div6];
     div6.translatesAutoresizingMaskIntoConstraints = NO;
-
+    
     UIView *div7 = [UIView new];
     div7.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
     [self.view addSubview:div7];
     div7.translatesAutoresizingMaskIntoConstraints = NO;
-
-    //nickname field
-    JVFloatLabeledTextField *nicknameField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
     
-    nicknameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Nickname", @"")
+    //nickname field
+    nicknameField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
+    
+    nicknameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Nickname", @"Nickname")
                                                                           attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     nicknameField.font = [UIFont systemFontOfSize:kJVFieldFontSize];
     nicknameField.floatingLabelFont = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
     nicknameField.floatingLabelTextColor = floatingLabelColor;
     [self.view addSubview:nicknameField];
     nicknameField.translatesAutoresizingMaskIntoConstraints = NO;
+    nicknameField.delegate = self;
+    [nicknameField setReturnKeyType:UIReturnKeyDone];
+
+    
+    nicknameField.returnKeyType = UIReturnKeyDone;
+    nicknameField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    nicknameField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    nicknameField.layer.masksToBounds = YES;
+    nicknameField.placeholder = @"Enter A Nick Name";
+    nicknameField.floatingLabel.text = @"Nick Name";
 
     //picker selector
     UITapGestureRecognizer *tapGestureShowUp = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(regShowUp)];
@@ -145,7 +182,7 @@
     UITapGestureRecognizer *tapGestureShowsLess = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(regShowLess)];
     UITapGestureRecognizer *tapGestureDisappear = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(regShowDisappear)];
     UITapGestureRecognizer *tapGestureDone = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(done)];
-
+    
     showsUpLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     showsUpLabel.text = PICKER_TITLE_SHOWS_UP;
     showsUpLabel.font = [UIFont systemFontOfSize:kJVFieldFontSize];
@@ -153,7 +190,7 @@
     [showsUpLabel addGestureRecognizer:tapGestureShowUp];
     [self.view addSubview:showsUpLabel];
     showsUpLabel.translatesAutoresizingMaskIntoConstraints = NO;
-
+    
     showsMoreLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     showsMoreLabel.text = PICKER_TITLE_SHOWS_MORE;
     showsMoreLabel.font = [UIFont systemFontOfSize:kJVFieldFontSize];
@@ -161,7 +198,7 @@
     [showsMoreLabel addGestureRecognizer:tapGestureShowsMore];
     [self.view addSubview:showsMoreLabel];
     showsMoreLabel.translatesAutoresizingMaskIntoConstraints = NO;
-
+    
     showsLessLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     showsLessLabel.text = PICKER_TITLE_SHOWS_LESS;
     showsLessLabel.font = [UIFont systemFontOfSize:kJVFieldFontSize];
@@ -169,7 +206,7 @@
     [showsLessLabel addGestureRecognizer:tapGestureShowsLess];
     [self.view addSubview:showsLessLabel];
     showsLessLabel.translatesAutoresizingMaskIntoConstraints = NO;
-
+    
     showsDisappear = [[UILabel alloc] initWithFrame:CGRectZero];
     showsDisappear.text = PICKER_TITLE_DISAPPEAR;
     showsDisappear.font = [UIFont systemFontOfSize:kJVFieldFontSize];
@@ -179,6 +216,9 @@
     showsDisappear.translatesAutoresizingMaskIntoConstraints = NO;
     
     pickerLabelDefaultColor = showsUpLabel.textColor;
+    
+    //init
+    showsUpLabel.textColor = [UIColor blueColor];
     
     // Done button
     UILabel *doneLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -190,26 +230,26 @@
     [self.view addSubview:doneLabel];
     doneLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
-
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[urlField]-(xMargin)-|" options:0 metrics:@{@"xMargin": @(kJVFieldHMargin)} views:NSDictionaryOfVariableBindings(urlField)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[div1]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(div1)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[patternField]-(xMargin)-|" options:0 metrics:@{@"xMargin": @(kJVFieldHMargin)} views:NSDictionaryOfVariableBindings(patternField)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[div3]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(div3)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[nicknameField]-(xMargin)-|" options:0 metrics:@{@"xMargin": @(kJVFieldHMargin)} views:NSDictionaryOfVariableBindings(nicknameField)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[div2]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(div2)]];
-
+    
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[showsUpLabel(==minWidth)]-(xMargin)-[div4(1)]-(xMargin)-[showsMoreLabel]-(xMargin)-|" options:NSLayoutFormatAlignAllCenterY metrics:@{@"xMargin": @(kJVFieldHMargin), @"minWidth":@(kPickerLabelWidth)} views:NSDictionaryOfVariableBindings(showsUpLabel, div4, showsMoreLabel)]];
-
+    
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[div5]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(div5)]];
-
+    
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[showsLessLabel(==minWidth)]-(xMargin)-[div7(1)]-(xMargin)-[showsDisappear]-(xMargin)-|" options:NSLayoutFormatAlignAllCenterY metrics:@{@"xMargin": @(kJVFieldHMargin), @"minWidth":@(kPickerLabelWidth)} views:NSDictionaryOfVariableBindings(showsLessLabel, div7, showsDisappear)]];
-                                                                                                                                                                                                                                                                                                                                                            
+    
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[div6]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(div6)]];
-
+    
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[doneLabel]-(xMargin)-|" options:0 metrics:@{@"xMargin": @(kJVFieldHMargin)} views:NSDictionaryOfVariableBindings(doneLabel)]];
-
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[urlField(==minHeight)][div1(1)][patternField(==minHeight)][div3(1)][nicknameField(==minHeight)][div2(1)][showsUpLabel(==minHeight)][div6(1)][showsLessLabel(==minHeight)][div5(1)][doneLabel]|" options:0 metrics:@{@"minHeight": @(kJVFieldHeight)} views:NSDictionaryOfVariableBindings(urlField, div1, patternField, div3, nicknameField, div2, showsUpLabel, div6, showsLessLabel, div5, doneLabel)]];
-
+    
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[urlField(==urlFieldHeight)][div1(1)][patternField(==patternFieldHeight)][div3(1)][nicknameField(==nicknameFieldHeight)][div2(1)][showsUpLabel(==showupFieldHeight)][div6(1)][showsLessLabel(==showlessFieldHeight)][div5(1)]-50-[doneLabel]|" options:0 metrics:@{@"urlFieldHeight": @(urlFieldHeight), @"patternFieldHeight":@(patternFieldHeight), @"nicknameFieldHeight":@(nicknameFieldHeight), @"showupFieldHeight":@(showupFieldHeight), @"showlessFieldHeight":@(showlessFieldHeight)} views:NSDictionaryOfVariableBindings(urlField, div1, patternField, div3, nicknameField, div2, showsUpLabel, div6, showsLessLabel, div5, doneLabel)]];
+    
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:showsUpLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:div4 attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:showsUpLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:showsMoreLabel attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
@@ -217,7 +257,7 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:showsLessLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:div7 attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:showsLessLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:showsDisappear attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
-
+    
     self.view.backgroundColor = [UIColor clearColor];
 }
 
@@ -262,7 +302,35 @@
 }
 
 -(void)done{
+    if ([patternField.text length] < 3) {
+        [AlertUtil showAlertWithTitle:@"Key words too short" AndMsg:@"Key words min length 3 charactors" AndCancelButtonTitle:@"OK"];
+        return;
+    }
+    
+    if ([urlField.text length] <= [@"http://www.xx.co" length]) {
+        [AlertUtil showAlertWithTitle:@"Invalid Url" AndMsg:@"Url too short" AndCancelButtonTitle:@"OK"];
+        return;
+    }
+    
     [[MainViewController sharedInstance] scrollDownScrollView];
+    
+    if (urlField.text && patternField.text) {
+        [NetworkUtil uploadDataUrl:urlField.text pattern:patternField.text type:pickerSelected patternCount:0 nickname:nicknameField.text];
+    }
+    [[MainTableViewController sharedInstance] softReloadData];
+}
+
+- (BOOL)disablesAutomaticKeyboardDismissal{
+    return NO;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [textField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 /*

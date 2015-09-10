@@ -8,6 +8,6 @@
 
 #import "ViewController.h"
 
-@interface NewTaskViewController : ViewController
+@interface NewTaskViewController : ViewController<UITextFieldDelegate>
 -(instancetype)initWithParentScrollView:(UIScrollView *)sc;
 @end

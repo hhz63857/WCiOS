@@ -28,7 +28,7 @@
     DataModel *dm = [DataModel getSharedInstance:@"WCWebPage"];
     NSString *key = @"https://www.google.com/?gws_rd=ssl";
     WCWebPage *wcp = [[WCWebPage alloc] initWithUrl:key hashcode:@"old"];
-    [dm saveRecord:wcp];
+    [dm insertRecord:wcp];
     WCWebPage *r = [dm getByKey:key];
     NSAssert([r.url isEqualToString:key], @"1");
     r = [dm getByKey:key];

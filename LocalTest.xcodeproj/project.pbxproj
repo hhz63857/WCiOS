@@ -48,6 +48,14 @@
 		1C2D279C1AE1C0BE00BF804B /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D279A1AE1C0BE00BF804B /* MainTableViewCell.m */; };
 		1C2D279D1AE1C0BE00BF804B /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2D279B1AE1C0BE00BF804B /* MainTableViewCell.xib */; };
 		1C2D27A01AE1DC8900BF804B /* WCTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D279F1AE1DC8900BF804B /* WCTask.m */; };
+		1C3C498E1B1353BB00F733B8 /* LoginNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C498C1B1353BB00F733B8 /* LoginNaviViewController.m */; };
+		1C3C498F1B1353BB00F733B8 /* LoginNaviViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C3C498D1B1353BB00F733B8 /* LoginNaviViewController.xib */; };
+		1C3C49921B13C45E00F733B8 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C49911B13C45E00F733B8 /* SignUpViewController.m */; };
+		1C3C49961B16C5A600F733B8 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C49951B16C5A600F733B8 /* KLCPopup.m */; };
+		1C4888E51AF5F39500E9B40D /* AsyncSaveWCTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4888E41AF5F39500E9B40D /* AsyncSaveWCTask.m */; };
+		1C4888E81AF5F88900E9B40D /* NamingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4888E71AF5F88900E9B40D /* NamingUtil.m */; };
+		1C4888EB1AF66FAE00E9B40D /* NetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4888EA1AF66FAE00E9B40D /* NetworkUtil.m */; };
+		1C4888EE1AF6770500E9B40D /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4888ED1AF6770500E9B40D /* DeviceUtil.m */; };
 		1C540E451ADE5D0C0027FFCE /* PatternSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C540E431ADE5D0C0027FFCE /* PatternSettingViewController.m */; };
 		1C540E461ADE5D0C0027FFCE /* PatternSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C540E441ADE5D0C0027FFCE /* PatternSettingViewController.xib */; };
 		1C540E4A1ADE76720027FFCE /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C540E481ADE76720027FFCE /* MainTableViewController.m */; };
@@ -62,6 +70,10 @@
 		1C59E5491AEAAF5300ED2702 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C59E5471AEAAF5300ED2702 /* NJKWebViewProgressView.m */; };
 		1C59E54C1AEB3B7F00ED2702 /* ImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C59E54B1AEB3B7F00ED2702 /* ImageUtil.m */; };
 		1C59E54F1AEBE33200ED2702 /* WCTaskCellWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C59E54E1AEBE33200ED2702 /* WCTaskCellWrapper.m */; };
+		1C61947B1B177CAA00FE47BD /* SignupTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C61947A1B177CAA00FE47BD /* SignupTask.m */; };
+		1C61947E1B2C9BC900FE47BD /* SigninTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C61947D1B2C9BC900FE47BD /* SigninTask.m */; };
+		1C6194821B2CF2FE00FE47BD /* NewTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6194801B2CF2FE00FE47BD /* NewTaskTableViewController.m */; };
+		1C6194831B2CF2FE00FE47BD /* NewTaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C6194811B2CF2FE00FE47BD /* NewTaskTableViewController.xib */; };
 		1C6F20891ACD8A0B00FE2F6A /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6F20881ACD8A0B00FE2F6A /* NewsViewController.m */; };
 		1C6F208C1ACD8C1E00FE2F6A /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6F208B1ACD8C1E00FE2F6A /* News.m */; };
 		1C6F208F1ACD8F7200FE2F6A /* AsyncNetworkDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6F208E1ACD8F7200FE2F6A /* AsyncNetworkDelegate.m */; };
@@ -76,6 +88,10 @@
 		1CA44BBA1AF1BBBF00F8C4C7 /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA44BB71AF1BBBF00F8C4C7 /* NSString+TextDirectionality.m */; };
 		1CA44BBE1AF31A6700F8C4C7 /* NewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA44BBC1AF31A6700F8C4C7 /* NewTaskViewController.m */; };
 		1CA44BBF1AF31A6700F8C4C7 /* NewTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA44BBD1AF31A6700F8C4C7 /* NewTaskViewController.xib */; };
+		1CB63A431B9E504D00C4C7FC /* BackgroundJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB63A421B9E504D00C4C7FC /* BackgroundJob.m */; };
+		1CB63A4C1B9F332300C4C7FC /* AlertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB63A4B1B9F332300C4C7FC /* AlertUtil.m */; };
+		1CB63A4F1B9F488000C4C7FC /* AsyncGetWCTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB63A4E1B9F488000C4C7FC /* AsyncGetWCTask.m */; };
+		1CB63A521BA143EB00C4C7FC /* SQLiteConcurrentDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB63A511BA143EB00C4C7FC /* SQLiteConcurrentDataService.m */; };
 		1CC1CB191AE6CE610080FC76 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1CB181AE6CE610080FC76 /* WebViewController.m */; };
 		1CC1CB1D1AE6D0010080FC76 /* MainSimpleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1CB1B1AE6D0010080FC76 /* MainSimpleTableViewCell.m */; };
 		1CC1CB1E1AE6D0010080FC76 /* MainSimpleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CC1CB1C1AE6D0010080FC76 /* MainSimpleTableViewCell.xib */; };
@@ -180,6 +196,21 @@
 		1C2D279B1AE1C0BE00BF804B /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
 		1C2D279E1AE1DC8900BF804B /* WCTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCTask.h; sourceTree = "<group>"; };
 		1C2D279F1AE1DC8900BF804B /* WCTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCTask.m; sourceTree = "<group>"; };
+		1C3C498B1B1353BB00F733B8 /* LoginNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNaviViewController.h; sourceTree = "<group>"; };
+		1C3C498C1B1353BB00F733B8 /* LoginNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNaviViewController.m; sourceTree = "<group>"; };
+		1C3C498D1B1353BB00F733B8 /* LoginNaviViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginNaviViewController.xib; sourceTree = "<group>"; };
+		1C3C49901B13C45E00F733B8 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		1C3C49911B13C45E00F733B8 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		1C3C49941B16C5A600F733B8 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
+		1C3C49951B16C5A600F733B8 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
+		1C4888E31AF5F39500E9B40D /* AsyncSaveWCTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSaveWCTask.h; sourceTree = "<group>"; };
+		1C4888E41AF5F39500E9B40D /* AsyncSaveWCTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSaveWCTask.m; sourceTree = "<group>"; };
+		1C4888E61AF5F88900E9B40D /* NamingUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamingUtil.h; sourceTree = "<group>"; };
+		1C4888E71AF5F88900E9B40D /* NamingUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NamingUtil.m; sourceTree = "<group>"; };
+		1C4888E91AF66FAE00E9B40D /* NetworkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtil.h; sourceTree = "<group>"; };
+		1C4888EA1AF66FAE00E9B40D /* NetworkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtil.m; sourceTree = "<group>"; };
+		1C4888EC1AF6770500E9B40D /* DeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
+		1C4888ED1AF6770500E9B40D /* DeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
 		1C540E421ADE5D0C0027FFCE /* PatternSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatternSettingViewController.h; path = LocalTest/PatternSettingViewController.h; sourceTree = "<group>"; };
 		1C540E431ADE5D0C0027FFCE /* PatternSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatternSettingViewController.m; path = LocalTest/PatternSettingViewController.m; sourceTree = "<group>"; };
 		1C540E441ADE5D0C0027FFCE /* PatternSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PatternSettingViewController.xib; path = LocalTest/PatternSettingViewController.xib; sourceTree = "<group>"; };
@@ -204,6 +235,13 @@
 		1C59E54B1AEB3B7F00ED2702 /* ImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtil.m; sourceTree = "<group>"; };
 		1C59E54D1AEBE33200ED2702 /* WCTaskCellWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCTaskCellWrapper.h; sourceTree = "<group>"; };
 		1C59E54E1AEBE33200ED2702 /* WCTaskCellWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCTaskCellWrapper.m; sourceTree = "<group>"; };
+		1C6194791B177CAA00FE47BD /* SignupTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupTask.h; sourceTree = "<group>"; };
+		1C61947A1B177CAA00FE47BD /* SignupTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupTask.m; sourceTree = "<group>"; };
+		1C61947C1B2C9BC900FE47BD /* SigninTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninTask.h; sourceTree = "<group>"; };
+		1C61947D1B2C9BC900FE47BD /* SigninTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninTask.m; sourceTree = "<group>"; };
+		1C61947F1B2CF2FE00FE47BD /* NewTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTaskTableViewController.h; sourceTree = "<group>"; };
+		1C6194801B2CF2FE00FE47BD /* NewTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTaskTableViewController.m; sourceTree = "<group>"; };
+		1C6194811B2CF2FE00FE47BD /* NewTaskTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTaskTableViewController.xib; sourceTree = "<group>"; };
 		1C6F20871ACD8A0B00FE2F6A /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsViewController.h; path = LocalTest/NewsViewController.h; sourceTree = "<group>"; };
 		1C6F20881ACD8A0B00FE2F6A /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsViewController.m; path = LocalTest/NewsViewController.m; sourceTree = "<group>"; };
 		1C6F208A1ACD8C1E00FE2F6A /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
@@ -230,6 +268,14 @@
 		1CA44BBB1AF31A6700F8C4C7 /* NewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTaskViewController.h; sourceTree = "<group>"; };
 		1CA44BBC1AF31A6700F8C4C7 /* NewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTaskViewController.m; sourceTree = "<group>"; };
 		1CA44BBD1AF31A6700F8C4C7 /* NewTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTaskViewController.xib; sourceTree = "<group>"; };
+		1CB63A411B9E504D00C4C7FC /* BackgroundJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundJob.h; sourceTree = "<group>"; };
+		1CB63A421B9E504D00C4C7FC /* BackgroundJob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundJob.m; sourceTree = "<group>"; };
+		1CB63A4A1B9F332300C4C7FC /* AlertUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertUtil.h; sourceTree = "<group>"; };
+		1CB63A4B1B9F332300C4C7FC /* AlertUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertUtil.m; sourceTree = "<group>"; };
+		1CB63A4D1B9F488000C4C7FC /* AsyncGetWCTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncGetWCTask.h; sourceTree = "<group>"; };
+		1CB63A4E1B9F488000C4C7FC /* AsyncGetWCTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncGetWCTask.m; sourceTree = "<group>"; };
+		1CB63A501BA143EB00C4C7FC /* SQLiteConcurrentDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteConcurrentDataService.h; sourceTree = "<group>"; };
+		1CB63A511BA143EB00C4C7FC /* SQLiteConcurrentDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteConcurrentDataService.m; sourceTree = "<group>"; };
 		1CC1CB181AE6CE610080FC76 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1CC1CB1A1AE6D0010080FC76 /* MainSimpleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSimpleTableViewCell.h; sourceTree = "<group>"; };
 		1CC1CB1B1AE6D0010080FC76 /* MainSimpleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSimpleTableViewCell.m; sourceTree = "<group>"; };
@@ -305,6 +351,8 @@
 			children = (
 				0B47554A1ACC6A830017CB87 /* SQLiteDataService.h */,
 				0B47554B1ACC6A830017CB87 /* SQLiteDataService.m */,
+				1CB63A501BA143EB00C4C7FC /* SQLiteConcurrentDataService.h */,
+				1CB63A511BA143EB00C4C7FC /* SQLiteConcurrentDataService.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -475,6 +523,16 @@
 				1C59E53A1AE8237000ED2702 /* SegueUtil.m */,
 				1C59E54A1AEB3B7F00ED2702 /* ImageUtil.h */,
 				1C59E54B1AEB3B7F00ED2702 /* ImageUtil.m */,
+				1C4888E61AF5F88900E9B40D /* NamingUtil.h */,
+				1C4888E71AF5F88900E9B40D /* NamingUtil.m */,
+				1C4888E91AF66FAE00E9B40D /* NetworkUtil.h */,
+				1C4888EA1AF66FAE00E9B40D /* NetworkUtil.m */,
+				1C4888EC1AF6770500E9B40D /* DeviceUtil.h */,
+				1C4888ED1AF6770500E9B40D /* DeviceUtil.m */,
+				1CB63A411B9E504D00C4C7FC /* BackgroundJob.h */,
+				1CB63A421B9E504D00C4C7FC /* BackgroundJob.m */,
+				1CB63A4A1B9F332300C4C7FC /* AlertUtil.h */,
+				1CB63A4B1B9F332300C4C7FC /* AlertUtil.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -505,15 +563,39 @@
 				1C1550E11AE3766B0038EBBE /* WCWebPage.h */,
 				1C1550E21AE3766B0038EBBE /* WCWebPage.m */,
 				1C2D279E1AE1DC8900BF804B /* WCTask.h */,
+				1C2D279F1AE1DC8900BF804B /* WCTask.m */,
 				1C59E54D1AEBE33200ED2702 /* WCTaskCellWrapper.h */,
 				1C59E54E1AEBE33200ED2702 /* WCTaskCellWrapper.m */,
-				1C2D279F1AE1DC8900BF804B /* WCTask.m */,
 				1C1550D11AE2893F0038EBBE /* NetworkCallContext.h */,
 				1C1550E81AE469450038EBBE /* DataEntryDelegate.h */,
 				1C86DAD51AE5EE7C006A775B /* BaseEntity.h */,
 				1C86DAD61AE5EE7C006A775B /* BaseEntity.m */,
 			);
 			name = data;
+			sourceTree = "<group>";
+		};
+		1C3C49931B16C5A600F733B8 /* KLCPopup */ = {
+			isa = PBXGroup;
+			children = (
+				1C3C49941B16C5A600F733B8 /* KLCPopup.h */,
+				1C3C49951B16C5A600F733B8 /* KLCPopup.m */,
+			);
+			path = KLCPopup;
+			sourceTree = "<group>";
+		};
+		1C4888E21AF5F26B00E9B40D /* network */ = {
+			isa = PBXGroup;
+			children = (
+				1C4888E31AF5F39500E9B40D /* AsyncSaveWCTask.h */,
+				1C4888E41AF5F39500E9B40D /* AsyncSaveWCTask.m */,
+				1CB63A4D1B9F488000C4C7FC /* AsyncGetWCTask.h */,
+				1CB63A4E1B9F488000C4C7FC /* AsyncGetWCTask.m */,
+				1C6194791B177CAA00FE47BD /* SignupTask.h */,
+				1C61947A1B177CAA00FE47BD /* SignupTask.m */,
+				1C61947C1B2C9BC900FE47BD /* SigninTask.h */,
+				1C61947D1B2C9BC900FE47BD /* SigninTask.m */,
+			);
+			name = network;
 			sourceTree = "<group>";
 		};
 		1C59E5431AEAAF5300ED2702 /* NJKWebViewProgress */ = {
@@ -599,6 +681,8 @@
 		1CD815CD1ADB55E9008A3BA1 /* WC */ = {
 			isa = PBXGroup;
 			children = (
+				1C3C49931B16C5A600F733B8 /* KLCPopup */,
+				1C4888E21AF5F26B00E9B40D /* network */,
 				1C1550E41AE467DF0038EBBE /* model */,
 				1C1550DD1AE372FB0038EBBE /* test */,
 				1C1550D91AE372C80038EBBE /* util */,
@@ -649,9 +733,17 @@
 				1C59E53C1AE828D500ED2702 /* SearchWebView.h */,
 				1C59E53D1AE828D500ED2702 /* SearchWebView.m */,
 				1C59E53F1AE828F200ED2702 /* SearchWebView.js */,
+				1C3C498B1B1353BB00F733B8 /* LoginNaviViewController.h */,
+				1C3C498C1B1353BB00F733B8 /* LoginNaviViewController.m */,
+				1C3C498D1B1353BB00F733B8 /* LoginNaviViewController.xib */,
 				1CA44BBB1AF31A6700F8C4C7 /* NewTaskViewController.h */,
 				1CA44BBC1AF31A6700F8C4C7 /* NewTaskViewController.m */,
 				1CA44BBD1AF31A6700F8C4C7 /* NewTaskViewController.xib */,
+				1C61947F1B2CF2FE00FE47BD /* NewTaskTableViewController.h */,
+				1C6194801B2CF2FE00FE47BD /* NewTaskTableViewController.m */,
+				1C6194811B2CF2FE00FE47BD /* NewTaskTableViewController.xib */,
+				1C3C49901B13C45E00F733B8 /* SignUpViewController.h */,
+				1C3C49911B13C45E00F733B8 /* SignUpViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -763,6 +855,7 @@
 				1C540E4B1ADE76720027FFCE /* MainTableViewController.xib in Resources */,
 				0BE6B76A1AC993F1005017C2 /* Main.storyboard in Resources */,
 				1CD815941AD86C6C008A3BA1 /* ImgViewController.xib in Resources */,
+				1C6194831B2CF2FE00FE47BD /* NewTaskTableViewController.xib in Resources */,
 				1C0A64B01ACECA5200CA731A /* TestViewController.xib in Resources */,
 				1CC1CB1E1AE6D0010080FC76 /* MainSimpleTableViewCell.xib in Resources */,
 				1CD815E51ADDA834008A3BA1 /* WebViewController.xib in Resources */,
@@ -772,6 +865,7 @@
 				1C59E5381AE81D5400ED2702 /* DetailWebViewController.xib in Resources */,
 				1C2D279D1AE1C0BE00BF804B /* MainTableViewCell.xib in Resources */,
 				1CD815D61ADB5A1C008A3BA1 /* WelcomeViewController.xib in Resources */,
+				1C3C498F1B1353BB00F733B8 /* LoginNaviViewController.xib in Resources */,
 				1CA44BBF1AF31A6700F8C4C7 /* NewTaskViewController.xib in Resources */,
 				1C73702A1AE6BF0A007AF6EF /* MainViewController.xib in Resources */,
 				1C0AD4F81AD1B2B200A8C6BA /* ArticleView.xib in Resources */,
@@ -851,10 +945,12 @@
 				1CC1CB211AE759E10080FC76 /* BackgroundUtil.m in Sources */,
 				1C59E5371AE81D5400ED2702 /* DetailWebViewController.m in Sources */,
 				1C1550E71AE467F20038EBBE /* DataModel.m in Sources */,
+				1C61947B1B177CAA00FE47BD /* SignupTask.m in Sources */,
 				1C59E5491AEAAF5300ED2702 /* NJKWebViewProgressView.m in Sources */,
 				0B47554C1ACC6A830017CB87 /* SQLiteDataService.m in Sources */,
 				1C6F208C1ACD8C1E00FE2F6A /* News.m in Sources */,
 				1C0AD4DA1ACF2BA500A8C6BA /* TestCollectionViewController.m in Sources */,
+				1C61947E1B2C9BC900FE47BD /* SigninTask.m in Sources */,
 				1C86DAD71AE5EE7C006A775B /* BaseEntity.m in Sources */,
 				1C540E451ADE5D0C0027FFCE /* PatternSettingViewController.m in Sources */,
 				1CD815D51ADB5A1C008A3BA1 /* WelcomeViewController.m in Sources */,
@@ -862,13 +958,18 @@
 				1CC1CB1D1AE6D0010080FC76 /* MainSimpleTableViewCell.m in Sources */,
 				1C7370291AE6BF0A007AF6EF /* MainViewController.m in Sources */,
 				1C0AD4F41AD0835100A8C6BA /* ArticleViewController.m in Sources */,
+				1C4888EB1AF66FAE00E9B40D /* NetworkUtil.m in Sources */,
+				1C3C49921B13C45E00F733B8 /* SignUpViewController.m in Sources */,
 				0B4755441ACB3F440017CB87 /* CDSource.m in Sources */,
+				1C4888EE1AF6770500E9B40D /* DeviceUtil.m in Sources */,
 				1C2D279C1AE1C0BE00BF804B /* MainTableViewCell.m in Sources */,
 				0BE6B7671AC993F1005017C2 /* ViewController.m in Sources */,
+				1C6194821B2CF2FE00FE47BD /* NewTaskTableViewController.m in Sources */,
 				1CD815971AD86D07008A3BA1 /* ImgAppDelegate.m in Sources */,
 				1CD815DF1ADCC10F008A3BA1 /* PageViewController.m in Sources */,
 				0BE6B7641AC993F1005017C2 /* AppDelegate.m in Sources */,
 				0BD5BD031ACC7B7D0083A554 /* NewsBuilder.m in Sources */,
+				1CB63A431B9E504D00C4C7FC /* BackgroundJob.m in Sources */,
 				1C2D27A01AE1DC8900BF804B /* WCTask.m in Sources */,
 				1CA44BAD1AF141D500F8C4C7 /* UIImage+ImageEffects.m in Sources */,
 				1C6F208F1ACD8F7200FE2F6A /* AsyncNetworkDelegate.m in Sources */,
@@ -880,20 +981,26 @@
 				0B4755271ACB05860017CB87 /* LocalDataManager.m in Sources */,
 				0B4755551ACC75D10017CB87 /* NetworkService.m in Sources */,
 				1C7370221AE6AA7F007AF6EF /* DateFormatUtil.m in Sources */,
+				1CB63A521BA143EB00C4C7FC /* SQLiteConcurrentDataService.m in Sources */,
 				1C540E4A1ADE76720027FFCE /* MainTableViewController.m in Sources */,
 				1C0AD4EB1AD0705900A8C6BA /* PresentationController.m in Sources */,
 				1CA44BBA1AF1BBBF00F8C4C7 /* NSString+TextDirectionality.m in Sources */,
 				1C59E5331AE8087000ED2702 /* UIImage+StackBlur.m in Sources */,
 				1C59E54F1AEBE33200ED2702 /* WCTaskCellWrapper.m in Sources */,
 				1C1550ED1AE479570038EBBE /* DataModelTest.m in Sources */,
+				1C4888E81AF5F88900E9B40D /* NamingUtil.m in Sources */,
 				1C59E5481AEAAF5300ED2702 /* NJKWebViewProgress.m in Sources */,
 				1C0AD5021AD455FE00A8C6BA /* MapAppDelegate.m in Sources */,
+				1C4888E51AF5F39500E9B40D /* AsyncSaveWCTask.m in Sources */,
 				1C0AD4E61ACF3E9200A8C6BA /* LikeUnitCell.m in Sources */,
+				1C3C49961B16C5A600F733B8 /* KLCPopup.m in Sources */,
 				1CA44BB91AF1BBBF00F8C4C7 /* JVFloatLabeledTextView.m in Sources */,
 				1C6F20891ACD8A0B00FE2F6A /* NewsViewController.m in Sources */,
 				1CA44BB81AF1BBBF00F8C4C7 /* JVFloatLabeledTextField.m in Sources */,
 				1CC1CB191AE6CE610080FC76 /* WebViewController.m in Sources */,
+				1CB63A4C1B9F332300C4C7FC /* AlertUtil.m in Sources */,
 				0BD5BD001ACC7B720083A554 /* NS+FSTestSuite.m in Sources */,
+				1CB63A4F1B9F488000C4C7FC /* AsyncGetWCTask.m in Sources */,
 				0BE6B7861AC99472005017C2 /* C1.m in Sources */,
 				1CD815D11ADB5636008A3BA1 /* WCDelegate.m in Sources */,
 				1CA44BB01AF1BB6D00F8C4C7 /* JVFloatLabeledTextFieldViewController.m in Sources */,
@@ -901,6 +1008,7 @@
 				1C0AD4FE1AD4552200A8C6BA /* MapViewController.m in Sources */,
 				1C1550E31AE3766B0038EBBE /* WCWebPage.m in Sources */,
 				1C59E53E1AE828D500ED2702 /* SearchWebView.m in Sources */,
+				1C3C498E1B1353BB00F733B8 /* LoginNaviViewController.m in Sources */,
 				0B4755521ACC75BB0017CB87 /* NSTestSuite.m in Sources */,
 				1C0AD4EE1AD077C600A8C6BA /* HomeContrller.m in Sources */,
 			);
@@ -1027,14 +1135,14 @@
 			baseConfigurationReference = A9295296F67A68CEC7D5B7C1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LocalTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1751b87c-3e62-4878-b037-4081f21b8701";
 			};
 			name = Debug;
 		};
@@ -1043,14 +1151,14 @@
 			baseConfigurationReference = C9BD1C68301E138812CDD38E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LocalTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1751b87c-3e62-4878-b037-4081f21b8701";
 			};
 			name = Release;
 		};

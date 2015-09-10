@@ -47,7 +47,7 @@
     MapViewController *mapVC = [[MapViewController alloc] init];
     self.mapNaviController = [[UINavigationController alloc] initWithRootViewController:mapVC];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor blackColor];
+//    self.window.backgroundColor = [UIColor blackColor];
     self.window.rootViewController = self.mapNaviController;
     [self.window makeKeyAndVisible];
     return YES;

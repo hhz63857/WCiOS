@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "PresentationController.h"
 #import "HomeContrller.h"
+#import "BackgroundUtil.h"
 
 @interface AppDelegate ()
 
@@ -99,12 +100,15 @@
     
     //8,
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor blackColor];
+//    self.window.backgroundColor = [UIColor blackColor];
     
     //9, todo setup sidebar
     [self setupSideBar:mainNavi];
     
     [self.window makeKeyAndVisible];
+    
+
+    self.window.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES :self.window.frame];
     return YES;
 }
 

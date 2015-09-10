@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DataEntryDelegate.h"
 #import "SQLiteDataService.h"
+#import "SQLiteConcurrentDataService.h"
 #import "BaseEntity.h"
 
 @interface DataModel : NSObject
@@ -18,6 +19,7 @@
 -(id<DataEntryDelegate>) getByKey:(id)val;
 -(NSArray *) getByField:(NSString *)fieldName fieldValue:(id)val;
 -(NSArray *)readAll;
+-(void)insertRecord:(BaseEntity *)record;
 -(void) updateWithKey:(id)keyVal changes:(NSDictionary *)changes;
 -(void) removeByKey:(id)val;
 -(void)saveRecord:(BaseEntity *)record;

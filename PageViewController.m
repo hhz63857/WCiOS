@@ -16,7 +16,9 @@
 #import "WCTask.h"
 #import "WCWebPage.h"
 #import "MainTableViewController.h"
-
+#import "AsyncSaveWCTask.h"
+#import "AsyncNetworkDelegate.h"
+#import "NetworkUtil.h"
 #define PAGE_COUNT 3
 
 @interface PageViewController ()
@@ -46,6 +48,22 @@
     [self addChildViewController:self.pageController];
     [[self view] addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
+    
+    [self hideBottomIndicator];
+}
+
+-(void) hideBottomIndicator
+{
+    NSArray *subviews = self.pageController.view.subviews;
+    UIPageControl *thisControl = nil;
+    for (int i=0; i<[subviews count]; i++) {
+        if ([[subviews objectAtIndex:i] isKindOfClass:[UIPageControl class]]) {
+            thisControl = (UIPageControl *)[subviews objectAtIndex:i];
+        }
+    }
+    
+    thisControl.hidden = true;
+    self.pageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height+40);
 }
 
 - (void) initViewControllers
@@ -76,17 +94,7 @@
 }
 
 -(void)saveNewWCTask {
-    DataModel * wtDM = [DataModel getSharedInstance:WCTASK_ENTITY_NAME];
-    DataModel * wpDM = [DataModel getSharedInstance:WCWEBPAGE_ENTITY_NAME];
-
-    WCTask *wt = [[WCTask alloc] initWithUrl:self.newWCTaskUrl Pattern:self.newWCTaskPattern Type:self.newWCTaskType PatternCount:0 Nickname:self.newWCTaskNickname];
-    
-    WCWebPage *wp = [[WCWebPage alloc] initWithUrl:self.newWCTaskUrl hashcode:nil];
-    
-    [wtDM saveRecord:wt];
-    [wpDM saveRecord:wp];
-
-    [[MainTableViewController sharedInstance].tableView reloadData];
+    [NetworkUtil uploadDataUrl:self.newWCTaskUrl pattern:self.newWCTaskPattern type:self.newWCTaskType patternCount:0 nickname:self.newWCTaskNickname];
 }
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index {

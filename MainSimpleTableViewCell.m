@@ -9,6 +9,7 @@
 #import "MainSimpleTableViewCell.h"
 #import "WCTask.h"
 #import "DateFormatUtil.h"
+#import "NamingUtil.h"
 
 @implementation MainSimpleTableViewCell
 
@@ -20,7 +21,7 @@
 {
     if (wctask != nil && wctask.url != nil) {
         self.updateInfoField.text = wctask.lastUpdate != nil ? [[@"Last updated " stringByAppendingString: [DateFormatUtil getTimeElapsed:wctask.lastUpdate]] stringByAppendingString:@" ago."] : @"Not found";
-        self.nicknameField.text = wctask.nickname != nil && [wctask.nickname length] > 0? wctask.nickname : [[wctask.url substringWithRange:NSMakeRange(11, 5)] stringByAppendingString:@"..."];
+        self.nicknameField.text = [NamingUtil getNickName:wctask];
     }
 }
 

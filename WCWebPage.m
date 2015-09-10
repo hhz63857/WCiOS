@@ -29,8 +29,9 @@
     return wt;
 }
 
--(void)saveData:(id)data{
+-(void)postCall:(id)data{
     NSArray *arr = [[DataModel getSharedInstance:WCTASK_ENTITY_NAME] getByField:@"url" fieldValue:self.url];
+    
     for (WCTask *wct in arr) {
         [NSThread detachNewThreadSelector:@selector(searchPattern:) toTarget:wct withObject:data];
     }
@@ -42,6 +43,10 @@
 
 -(id)getURL{
     return self.url;
+}
+
+-(void)postSave{
+    
 }
 
 @end

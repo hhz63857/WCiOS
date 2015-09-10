@@ -61,6 +61,7 @@
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     self.tableView.layer.borderWidth = 0;
     self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
 }
 
 - (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar {
@@ -68,6 +69,10 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self softReloadData];
+}
+
+-(void) softReloadData{
     [self loadDataFromDB];
     [self.tableView reloadData];
 }
@@ -85,11 +90,6 @@
                 [wctaskDM removeByKey:toRemoveWT.key];
             }
             [self.WCTasks removeObjectAtIndex:indexPath.row];
-
-            NSArray *arr = [wctaskDM getByField:@"url" fieldValue:url];
-            if (arr == nil || [arr count] == 0) {
-                [wcwebpageDM removeByKey:url];
-            }
             
             [self.tableView reloadData];
         }
@@ -120,12 +120,22 @@
     for (WCWebPage *wcw in self.WCPages) {
         [AsyncNetworkDelegate startAsyncDownloadDataToDB:wcw];
     }
+    
+//    UIImage* bgImg = [[BackgroundUtil sharedInstance] getBackgroundSourceImageWithBlur:YES :self.tableView.frame];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:bgImg];
+//    self.tableView.backgroundView = imageView;
+    
     [self.tableView reloadData];
     if (self.refreshControl) {
         [self.refreshControl endRefreshing];
     }
     [[BackgroundUtil sharedInstance] randomSetBackImg];
-    [MainViewController sharedInstance].view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES];
+//    [MainViewController sharedInstance].view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES :self.view.frame];
+
+    [MainViewController sharedInstance].view.backgroundColor = [UIColor clearColor];
+    
+//    [MainViewController sharedInstance].view.backgroundColor = [UIColor clearColor];
+    [[MainViewController sharedInstance] refreshBGImage];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -146,6 +156,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WCTask *wt = [self.WCTasks objectAtIndex:indexPath.row];
+    
     if ([self showFullCellView:wt]) {
         MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellWithWebView"];
         if (cell == nil) {

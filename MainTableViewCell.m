@@ -12,6 +12,7 @@
 #import "WCWebPage.h"
 #import "DataModel.h"
 #import "Constant.h"
+#import "NamingUtil.h"
 
 @interface MainTableViewCell(){
     NSData *screenShot;
@@ -22,14 +23,14 @@
 @implementation MainTableViewCell
 
 - (void)awakeFromNib {
+    self.contentView.backgroundColor = [UIColor clearColor];
 }
 
 - (void) initWithWCTask:(WCTask *)wctask
 {
     if (wctask != nil && wctask.url != nil) {
-        self.updateInfo.text = wctask.lastUpdate != nil ? [[@"last found pattern " stringByAppendingString: [DateFormatUtil getTimeElapsed:wctask.lastUpdate]] stringByAppendingString:@" ago."] : @"Not found";
-        self.title.text = wctask.nickname != nil && [wctask.nickname length] > 0? wctask.nickname :
-        [[wctask.url substringWithRange:NSMakeRange(11, 5)] stringByAppendingString:@"..."];
+        [self updateLastUpdateLabel:wctask];
+        self.title.text = [NamingUtil getNickName:wctask];
         self.webPreview.delegate = self;
         
         //screenshot and save image
@@ -39,7 +40,15 @@
         if (!screenShot) {
             [self.webPreview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:wctask.url]]];
         }
+        
+        wctask.contextCell = self;
+//        [wctask setContextCell:self];
     }
+}
+
+-(void)updateLastUpdateLabel:(WCTask *)wctask
+{
+    self.updateInfo.text = wctask.lastUpdate != nil ? [[@"last found pattern " stringByAppendingString: [DateFormatUtil getTimeElapsed:wctask.lastUpdate]] stringByAppendingString:@" ago."] : @"Not found";
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{

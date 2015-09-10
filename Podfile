@@ -5,5 +5,6 @@ pod 'Canvas'
 pod 'LTMorphingLabel', '~> 0.0.6'
 pod "TOMSMorphingLabel", "~> 0.5"
 pod 'GPUImage', '~> 0.1.4'
+pod 'FMDB'
 workspace 'LocalTest'
 use_frameworks!

@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @protocol NetworkCallContext <NSObject>
--(void)saveData:(id)data;
+-(void)postCall:(id)data;
 -(id)getUId;
 -(id)getURL;
+-(id)getPostData;
 
 @end

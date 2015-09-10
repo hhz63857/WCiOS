@@ -16,6 +16,9 @@
 #import "DateFormatUtil.h"
 #import "NetworkCallContext.h"
 #import "AsyncNetworkDelegate.h"
+#import "AsyncSaveWCTask.h"
+#import "MainTableViewCell.h"
+#import "AlertUtil.h"
 #define ENTITY_NAME @"WCTask"
 
 @interface __WCTaskNetworkContext:NSObject<NetworkCallContext>
@@ -33,10 +36,11 @@
     return self;
 }
 
--(void)saveData:(id)data{
+-(void)postCall:(id)data{
     NSMutableArray *ha = [RegexUtil regexGetFromString:data WithPattern:self.wctask.pattern];
     DataModel *wd = [DataModel getSharedInstance:WCTASK_ENTITY_NAME];
     [wd updateWithKey:self.wctask.key changes:@{@"patternCount": @([ha count])}];
+    [NSThread detachNewThreadSelector:@selector(searchPattern:) toTarget:self.wctask withObject:data];
 }
 
 -(id)getUId{
@@ -50,6 +54,13 @@
 @end
 
 
+@interface WCTask(){
+    MainTableViewCell *contextCell;
+    NSString *cachedUrl;
+}
+
+@end
+
 @implementation WCTask
 @dynamic url;
 @dynamic pattern;
@@ -57,9 +68,15 @@
 @dynamic nickname;
 @dynamic type;
 @dynamic lastUpdate;
+//@dynamic contextCell;
+
 
 -(instancetype)initWithUrl:(NSString *)url Pattern:(NSString *)pattern Type:(NSString *)type PatternCount:(NSInteger) patternCount Nickname:(NSString *)nickname
 {
+    if (!url || !pattern || !type) {
+        return nil;
+    }
+    
     WCTask *wt = [super initEntity:@"WCTask" key:[url stringByAppendingPathComponent:pattern]];
     if (wt) {
         wt.url = url;
@@ -69,23 +86,34 @@
         wt.lastUpdate = nil;
         wt.nickname = nickname;
         wt.key = [url stringByAppendingPathComponent:pattern];
-        if ([type isEqualToString:PICKER_TITLE_SHOWS_MORE] || [type isEqualToString:PICKER_TITLE_SHOWS_LESS]) {
+        if (true || [type isEqualToString:PICKER_TITLE_SHOWS_MORE] || [type isEqualToString:PICKER_TITLE_SHOWS_LESS]) {
             __WCTaskNetworkContext *wcContext = [[__WCTaskNetworkContext alloc] initWithWCTask:wt];
             [AsyncNetworkDelegate startAsyncDownloadDataToDB:(id<NetworkCallContext> *)wcContext];
         }
         return wt;
     }
     else {
-//        NSString *msg = [NSString stringWithFormat:@"Already exist entity url: %@ pattern: %@. ", url, pattern];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Already exist." message: @"" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
+        [AlertUtil showAlertWithTitle:@"Already Exists" AndMsg:@"" AndCancelButtonTitle:@"OK"];
     }
     return nil;
 }
 
+-(void)setContextCell:(MainTableViewCell *)cell{
+    contextCell = cell;
+}
+
+-(MainTableViewCell *)getContextCell{
+    return contextCell;
+}
+
 -(void)searchPattern:(id)html
 {
+    if(!self.url) {
+        NSLog(@"Skip for empty url");
+        return;
+    }
+    NSLog(@"Searching %@ %@ %@", self.url, self.type, self.pattern);
+    
     //1, do the regex match
     BOOL changed = [self isChanged:html];
     
@@ -95,12 +123,18 @@
     NSDate *now = [[NSDate alloc] init];
     
     if (changed) {
+        self.lastUpdate = now;
+        
+        if([self getContextCell]) {
+            [[self getContextCell] updateLastUpdateLabel:self];
+        }
+        
         NSDictionary *dict = @{@"lastUpdate":now};
         [dm updateWithKey:self.key changes:dict];
+        id v = [dm getByKey:self.key];
     }
     
     //3,todo send notification
-    
     if (SHOW_PATTERN_FOUND_ALERT && changed && [DateFormatUtil withinTimeElapse:now inSeconds:PATTERN_FIND_ALERT_TIME_INTERVAL]) {
         //4, show alert
         NSString *msg = [self.pattern stringByAppendingPathComponent: @" shows up!"];
@@ -109,6 +143,7 @@
         [alert release];
     }
 }
+
 
 -(BOOL)isChanged:(NSString *)htmlString
 {
@@ -159,6 +194,41 @@
 
 -(id)getURL{
     return self.url;
+}
+
+-(void)preInsertToDB{
+    [AsyncNetworkDelegate uploadDataByHTTPGet:[[AsyncSaveWCTask alloc] initWithWCTask:self]];
+}
+
+-(void)preRemoveFromDB{
+    [AsyncNetworkDelegate uploadDataByHTTPGet:[[AsyncSaveWCTask alloc] initWithWCTaskToDelete:self]];
+    cachedUrl = [self.url copy];
+}
+
+-(void)postRemoveFromDB{
+    if(cachedUrl) {
+        static NSThread *_delThread = nil;
+        _delThread = [[NSThread alloc] initWithTarget:self selector:@selector(deleteFromWCWebPage) object:NULL];
+        [_delThread start];
+//        [self performSelector:@selector(sleepThread) onThread:_delThread withObject:nil waitUntilDone:YES];
+
+    }
+}
+
+-(void)sleepThread {
+    NSLog(@"Suspend before try");
+    [NSThread sleepForTimeInterval:3.0];
+    NSLog(@"After sleep 3");
+}
+
+-(void)deleteFromWCWebPage{
+    
+    DataModel *wctaskDM = [DataModel getSharedInstance:WCTASK_ENTITY_NAME];
+    DataModel *wcwebpageDM = [DataModel getSharedInstance:WCWEBPAGE_ENTITY_NAME];
+    NSArray *arr = [wctaskDM getByField:@"url" fieldValue:cachedUrl];
+    if (arr == nil || [arr count] == 0) {
+        [wcwebpageDM removeByKey:cachedUrl];
+    }
 }
 
 @end

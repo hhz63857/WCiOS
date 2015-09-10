@@ -12,6 +12,7 @@
 #import "DataEntryDelegate.h"
 #import "BaseEntity.h"
 #import <UIKit/UIKit.h>
+@class MainTableViewCell;
 
 @interface WCTask : BaseEntity<DataEntryDelegate>
 @property (strong, nonatomic) NSString *url;
@@ -22,4 +23,7 @@
 @property (strong, nonatomic) NSDate *lastUpdate;
 -(instancetype)initWithUrl:(NSString *)url Pattern:(NSString *)pattern Type:(NSString *)type PatternCount:(NSInteger) patternCount Nickname:(NSString *)nickname;
 -(void)searchPattern:(id)html;
+-(void)setContextCell:(MainTableViewCell *)contextCell;
+-(MainTableViewCell *)getContextCell;
+-(void)deleteFromWCWebPage;
 @end

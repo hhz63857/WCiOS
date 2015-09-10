@@ -12,5 +12,7 @@
 @interface AsyncNetworkDelegate : NSObject
 
 +(void)startAsyncDownloadDataToDB:(id<NetworkCallContext> *) context;
-+(void)downloadAndParseAndSaveToDB:(id<NetworkCallContext> *) context;
++(void)uploadDataByHTTPGet:(id<NetworkCallContext> *) context;
++(void)uploadDataByHTTPPost:(id<NetworkCallContext> *) context;
++(void)syncUploadDataByHTTPGet:(id<NetworkCallContext> *) context;
 @end

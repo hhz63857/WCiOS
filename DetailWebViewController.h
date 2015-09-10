@@ -14,5 +14,6 @@
 @property(strong, nonatomic) NSString *pattern;
 @property (retain, nonatomic) IBOutlet SearchWebView *webview;
 
+
 -(instancetype)initWithUrl:(NSString *)url andPattern:(NSString*)pattern;
 @end

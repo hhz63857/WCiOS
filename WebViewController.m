@@ -42,7 +42,7 @@
     _progressProxy.webViewProxyDelegate = self;
     _progressProxy.progressDelegate = self;
     
-    self.view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES];
+    self.view.backgroundColor = [[BackgroundUtil sharedInstance] getBackgroundImageWithBlur:YES :self.view.frame];
  
     CGFloat progressBarHeight = 3.f;
     CGRect navigaitonBarBounds = self.webView.bounds;

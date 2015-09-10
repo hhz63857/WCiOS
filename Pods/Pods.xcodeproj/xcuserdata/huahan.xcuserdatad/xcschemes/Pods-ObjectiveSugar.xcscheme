@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "707A654711105BB9B867236B"
+               BlueprintIdentifier = "9568CAE5D9F53AA4834A8A9E"
                BuildableName = "ObjectiveSugar.framework"
                BlueprintName = "Pods-ObjectiveSugar"
                ReferencedContainer = "container:Pods.xcodeproj">

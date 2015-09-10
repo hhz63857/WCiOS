@@ -14,15 +14,15 @@
 {
     NSError *error;
     NSStringEncoding encoding;
-    NSString *pageData = [NSString stringWithContentsOfURL:url usedEncoding:&encoding error:NULL];
-    
-    NSString *es = [NSString stringWithFormat:@"%d", encoding];
+//    NSString *pageData = [NSString stringWithContentsOfURL:url usedEncoding:&encoding error:NULL];
+//    
+//    NSString *es = [NSString stringWithFormat:@"%d", encoding];
 //    NSLog(@"url: %@  encoding:%d",url, encoding);
     NSInteger ni = NSUTF8StringEncoding;
     //This IS HACK
-    if ([es intValue] <= 16) { // todo, Fix this hack, change to a validation function
-        ni = [es intValue] % 15;
-    }
+//    if ([es intValue] <= 16) { // todo, Fix this hack, change to a validation function
+//        ni = [es intValue] % 15;
+//    }
     NSString *resultString = [NSString stringWithContentsOfURL:url
                                                       encoding:ni
                                                       error:&error];

@@ -8,10 +8,10 @@
 
 #import "DataModel.h"
 #import "BaseEntity.h"
-
+#import "SQLiteConcurrentDataService.h"
 @interface DataModel ()
 {
-    SQLiteDataService *ds;
+    SQLiteConcurrentDataService *ds;
     NSString *entityName;
     NSCache *persistableCache;
     NSMutableDictionary *allKeyIndex;
@@ -22,12 +22,13 @@
 
 //todo
 +(instancetype) getSharedInstance:(NSString *)entityNameVal{
-    DataModel *instance = [[self instanceDict] objectForKey:entityNameVal];
-    if (!instance) {
-        instance = [[self alloc] initWithEntityName:entityNameVal];
-        [[self instanceDict] setObject:instance forKey:entityNameVal];
-    }
-    return instance;
+//    DataModel *instance = [[self instanceDict] objectForKey:entityNameVal];
+//    if (!instance) {
+//        instance = [[self alloc] initWithEntityName:entityNameVal];
+//        [[self instanceDict] setObject:instance forKey:entityNameVal];
+//    }
+//    return instance;
+    return [[self alloc] initWithEntityName:entityNameVal];
 }
 
 +(NSMutableDictionary *) instanceDict{
@@ -42,7 +43,10 @@
     self = [super init];
     persistableCache = [[NSCache alloc] init];
     [persistableCache setTotalCostLimit:2000];
-    ds = [SQLiteDataService sharedInstance];
+//    ds = [SQLiteDataService sharedInstance];
+//    ds = [SQLiteConcurrentDataService getSharedInstance:entityNameVal];
+    ds = [[SQLiteConcurrentDataService alloc] init];
+
     entityName = entityNameVal;
     allKeyIndex = [[NSMutableDictionary alloc] init];
     return self;
@@ -112,7 +116,9 @@
 
 -(void)saveRecord:(BaseEntity *)record {
     [self _removeCacheKeys: [self generateCacheKeyWithEntityName:entityName fieldName:@"key" keyValue:record.key]];
+    [record preSaveToDB];
     [ds saveRecord:record];
+    [record postSaveToDB];
 }
 
 -(void)_removeCacheKeys:(NSString *)indexKey {
@@ -128,11 +134,17 @@
         NSString *entireKey = [self generateCacheKeyWithEntityName:entityName fieldName:@"*" keyValue:@"*"];
         [persistableCache removeObjectForKey:entireKey];
 //        NSLog(@"After remove %@, %lu", entireKey, (unsigned long)[[persistableCache objectForKey:entireKey] count]);
-        NSArray *temp = [self readAll];
+//        NSArray *temp = [self readAll];
 //        NSLog(@"temp1 %@ %lu", entireKey, [temp count]);
-        temp = [self readAll];
+//        temp = [self readAll];
 //        NSLog(@"temp2 %@ %lu", entireKey, [temp count]);
     }
+}
+
+-(void)insertRecord:(BaseEntity *)record {
+    [record preInsertToDB];
+    [self saveRecord:record];
+    [record postInsertToDB];
 }
 
 -(void) updateWithKey:(id)keyVal changes:(NSDictionary *)changes{
@@ -141,13 +153,17 @@
         id val = [changes valueForKey:key];
         [record setValue:val forKey:key];
     }
+    [((BaseEntity *)record) preUpdateToDB];
     [self saveRecord:record];
+    [((BaseEntity *)record) postUpdateToDB];
 }
 
 -(void) removeByKey:(id)val{
     NSManagedObject *record = [self getByKey:val];
     [ds.managedObjectContext deleteObject:record];
+    [((BaseEntity *)record) preRemoveFromDB];
     [self saveRecord:record];
+    [((BaseEntity *)record) postRemoveFromDB];
 }
 
 @end
